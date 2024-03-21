@@ -1,0 +1,35 @@
+﻿<UserControl x:Class="BaKaVO.MVVM.View.PatientListView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:BaKaVO.MVVM.View"
+             mc:Ignorable="d" 
+             d:DesignHeight="645" d:DesignWidth="1280"
+             SizeChanged="PatientListView_SizeChanged">
+    <Grid>
+        <DataGrid 
+            x:Name="PatientListDataGrid" 
+            AutoGenerateColumns="False"
+            Margin="10,10,10,10"  
+            BorderBrush="Black" 
+            Background="White" 
+            Foreground="Black" 
+            CanUserAddRows="False" 
+            CanUserReorderColumns="False"
+            HorizontalScrollBarVisibility="Hidden" 
+            VerticalScrollBarVisibility="Hidden" 
+            ScrollViewer.CanContentScroll="False"
+            IsReadOnly="True"
+            DataGrid.SelectionChanged="PatientListDataGrid_SelectionChanged"
+            MouseDoubleClick="PatientListDataGrid_MouseDoubleClick">
+            <DataGrid.Columns >
+                <DataGridTextColumn  Width="25" Header="№"  x:Name="IDPat" Binding="{Binding IDP}" FontFamily="Roboto" CanUserResize="False"/>
+                <DataGridTextColumn  Width="250"  Header="Имя"  x:Name="NamePat" Binding="{Binding NameP}" FontFamily="Roboto"/>
+                <DataGridTextColumn  Width="250"  Header="Телефон" x:Name="PhonePat" Binding="{Binding PhoneP}" FontFamily="Roboto"/>
+                <DataGridTextColumn  Width="250"  Header="Дата заполнения" x:Name="FillingPat" Binding="{Binding FillingP}" FontFamily="Roboto"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        
+    </Grid>
+</UserControl>

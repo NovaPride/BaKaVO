@@ -1,0 +1,239 @@
+﻿<UserControl x:Class="BaKaVO.MVVM.View.PatientView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:BaKaVO.MVVM.View"
+             xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+             mc:Ignorable="d" 
+             d:DesignHeight="645" d:DesignWidth="1280"
+             Background="White"
+             SizeChanged="PatientView_SizeChanged">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="10"/>
+            <ColumnDefinition Width="0" x:Name="FirstColumn"/>
+            <ColumnDefinition Width="947"/>
+            <ColumnDefinition Width="18*"/>
+            <ColumnDefinition Width="10"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="5"/>
+            <RowDefinition Height="65"/>
+            <RowDefinition Height="332"/>
+            <RowDefinition Height="33*"/>
+            <RowDefinition Height="0" x:Name="PreLastRow"/>
+            <RowDefinition Height="75" x:Name="LastRow"/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3" IsHitTestVisible="False" x:Name="Grid1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="10*"/>
+                <ColumnDefinition Width="10*"/>
+                <ColumnDefinition Width="135"/>
+                <ColumnDefinition Width="190"/>
+                <ColumnDefinition Width="165"/>
+                <ColumnDefinition Width="165"/>
+            </Grid.ColumnDefinitions>
+
+            <Grid Grid.Column="0">
+                <TextBlock Text="Ф.И.О." Style="{StaticResource PatientTextBlockTheme}"/>
+                <TextBox Text="" Style="{StaticResource PatientTextBoxTheme}" x:Name="FullnameBox" />
+            </Grid>
+
+            <Grid Grid.Column="1">
+                <TextBlock Text="Адрес" Style="{StaticResource PatientTextBlockTheme}"/>
+                <TextBox Text="" Style="{StaticResource PatientTextBoxTheme}" x:Name="DomicileBox"/>
+            </Grid>
+
+            <Grid Grid.Column="2">
+                <TextBlock Text="Телефон" Style="{StaticResource PatientTextBlockTheme}"/>
+                <xctk:MaskedTextBox Mask="(00) 000-00-00" Text="29" Style="{StaticResource PatientTextBoxTheme}" x:Name="PhoneNumberBox"/>
+            </Grid>
+
+            <Grid Grid.Column="3">
+                <TextBlock Text="Прикус" Style="{StaticResource PatientTextBlockTheme}"/>
+                <ComboBox FontSize="18" VerticalAlignment="Bottom" HorizontalAlignment="Stretch" Margin="2,4,10,10" BorderBrush="Black" Background="Transparent" Foreground="Black" FontFamily="Roboto" x:Name="BiteCBox">
+                    <TextBlock>Прямой</TextBlock>
+                    <TextBlock>Глубокий</TextBlock>
+                    <TextBlock>Открытый</TextBlock>
+                    <TextBlock>Перекрестный</TextBlock>
+                    <TextBlock>Дистальный</TextBlock>
+                    <TextBlock>Мезиальный</TextBlock>
+                    <TextBlock>Ортогнатический</TextBlock>
+                </ComboBox>
+            </Grid>
+
+            <Grid Grid.Column="4">
+                <TextBlock Text="День рождения" Style="{StaticResource PatientTextBlockTheme}"/>
+                <DatePicker SelectedDateFormat="Short" FontSize="18" VerticalAlignment="Bottom" HorizontalAlignment="Stretch" Margin="2,4,10,10" BorderBrush="Black" Background="Transparent" Foreground="Black" FontFamily="Roboto" x:Name="BirthDate"/>
+            </Grid>
+
+            <Grid Grid.Column="5">
+                <TextBlock Text="Дата заполнения" Style="{StaticResource PatientTextBlockTheme}"/>
+                <DatePicker SelectedDateFormat="Short" FontSize="18" VerticalAlignment="Bottom" HorizontalAlignment="Stretch" Margin="2,4,1,10" BorderBrush="Black" Background="Transparent" Foreground="Black" FontFamily="Roboto" x:Name="FillingAtDate"/>
+            </Grid>
+
+        </Grid>
+
+        <Grid Grid.Row="2" Grid.Column="1" >
+            <Image Margin="0,0,10,0" VerticalAlignment="Center" HorizontalAlignment="Center" Source="../../Pics/Crib.png" />
+        </Grid>
+
+        <Grid Grid.Row="2" Grid.Column="2" IsHitTestVisible="False" x:Name="Grid2">
+            <DataGrid 
+                GridLinesVisibility="All" 
+                Padding="0" 
+                AutoGenerateColumns="False" 
+                HorizontalAlignment="Left" 
+                Height="331" Width="946" 
+                VerticalAlignment="Top"   
+                BorderBrush="Black" 
+                Background="Transparent" 
+                Foreground="Black" 
+                x:Name="datagrid" 
+                HeadersVisibility="None" 
+                CanUserAddRows="False" 
+                CanUserReorderColumns="False"
+                HorizontalScrollBarVisibility="Hidden" 
+                VerticalScrollBarVisibility="Hidden" 
+                ScrollViewer.CanContentScroll="False" 
+                SelectionUnit="Cell" 
+                SelectionMode="Single">
+                <DataGrid.Resources>
+                    <Style TargetType="DataGridCell">
+                        <!--<Setter Property="BorderThickness" Value="22" />-->
+                        <Setter Property="Height" Value="47" />
+                        <Setter Property="TextBlock.FontWeight" Value="DemiBold"/>
+                        <Setter Property="TextBlock.TextAlignment" Value="Center" />
+                        <Setter Property="TextBlock.FontSize" Value="27" />
+                    </Style>
+                    <Style TargetType="DataGrid">
+                        <Setter Property="Background" Value="Transparent" />
+                        <Setter Property="BorderThickness" Value="1" />
+                        <Setter Property="BorderBrush" Value="Black" />
+                    </Style>
+                    <Style TargetType="DataGridColumnHeader">
+                        <Setter Property="Background" Value="Transparent" />
+                        <Setter Property="BorderBrush" Value="Black" />
+                        <Setter Property="BorderThickness" Value="0 0 0 1" />
+                    </Style>
+                </DataGrid.Resources>
+                <DataGrid.Columns>
+                    <DataGridTextColumn Width="59" Header="1"  x:Name="Column1"  Binding="{Binding Col1}"  FontFamily="Times New Roman"/>
+                    <DataGridTextColumn Width="59" Header="2"  x:Name="Column2"  Binding="{Binding Col2}"  FontFamily="Times New Roman"/>
+                    <DataGridTextColumn Width="59" Header="3"  x:Name="Column3"  Binding="{Binding Col3}"  FontFamily="Times New Roman"/>
+                    <DataGridTextColumn Width="59" Header="4"  x:Name="Column4"  Binding="{Binding Col4}"  FontFamily="Times New Roman"/>
+                    <DataGridTextColumn Width="59" Header="5"  x:Name="Column5"  Binding="{Binding Col5}"  FontFamily="Times New Roman"/>
+                    <DataGridTextColumn Width="59" Header="6"  x:Name="Column6"  Binding="{Binding Col6}"  FontFamily="Times New Roman"/>
+                    <DataGridTextColumn Width="59" Header="7"  x:Name="Column7"  Binding="{Binding Col7}"  FontFamily="Times New Roman"/>
+                    <DataGridTextColumn Width="59" Header="8"  x:Name="Column8"  Binding="{Binding Col8}"  FontFamily="Times New Roman"/>
+                    <DataGridTextColumn Width="59" Header="9"  x:Name="Column9"  Binding="{Binding Col9}"  FontFamily="Times New Roman"/>
+                    <DataGridTextColumn Width="59" Header="10" x:Name="Column10" Binding="{Binding Col10}" FontFamily="Times New Roman"/>
+                    <DataGridTextColumn Width="59" Header="11" x:Name="Column11" Binding="{Binding Col11}" FontFamily="Times New Roman"/>
+                    <DataGridTextColumn Width="59" Header="12" x:Name="Column12" Binding="{Binding Col12}" FontFamily="Times New Roman"/>
+                    <DataGridTextColumn Width="59" Header="13" x:Name="Column13" Binding="{Binding Col13}" FontFamily="Times New Roman"/>
+                    <DataGridTextColumn Width="59" Header="14" x:Name="Column14" Binding="{Binding Col14}" FontFamily="Times New Roman"/>
+                    <DataGridTextColumn Width="59" Header="15" x:Name="Column15" Binding="{Binding Col15}" FontFamily="Times New Roman"/>
+                    <DataGridTextColumn Width="59" Header="16" x:Name="Column16" Binding="{Binding Col16}" FontFamily="Times New Roman"/>
+                </DataGrid.Columns >
+            </DataGrid>
+            <Button  Content=""  Margin="0,0,0,2" VerticalAlignment="Center" HorizontalAlignment="Stretch" Height="48" BorderBrush="Black" Background="Transparent" Foreground="Black" IsHitTestVisible="True"/>
+        </Grid>
+
+        <Grid Grid.Row="2" Grid.Column="3" IsHitTestVisible="False" x:Name="Grid3">
+            <TextBox FontSize="18" TextWrapping="Wrap"  AcceptsReturn="True" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" BorderThickness="1" Padding="0" Margin="10,0,1,1" BorderBrush="Black" Background="Transparent" Foreground="Black" FontFamily="Roboto" x:Name="CommentBox"/>
+        </Grid>
+
+        <Grid Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="3">
+            <DataGrid 
+             x:Name="DiaryDataGrid" 
+             AutoGenerateColumns="False"
+             Margin="0,5,0,0"  
+             BorderBrush="Black" 
+             Background="Transparent" 
+             Foreground="Black" 
+             CanUserAddRows="False" 
+             CanUserReorderColumns="False"
+             HorizontalScrollBarVisibility="Hidden" 
+             VerticalScrollBarVisibility="Hidden" 
+             IsReadOnly="True"
+             SelectionMode="Single"
+             SelectionUnit="FullRow"
+             ScrollViewer.CanContentScroll="False"
+             MouseDoubleClick="DiaryDataGrid_MouseDoubleClick"
+             SelectionChanged="DiaryDataGrid_SelectionChanged"> 
+                <DataGrid.Columns >
+                    <DataGridTextColumn  Width="1" Header="№"  x:Name="idDGT" Binding="{Binding idD}" FontFamily="Roboto" FontSize="16" CanUserResize="False"/>
+                    <DataGridTextColumn  Width="170"  Header="Дата"  x:Name="dateDGT" Binding="{Binding dateD}" FontFamily="Roboto" FontSize="16" CanUserResize="False"/>
+                    <DataGridTextColumn  Width="25*"  Header="Жалоба" x:Name="appealDGT" Binding="{Binding appealD}" FontFamily="Roboto" FontSize="16"/>
+                    <DataGridTextColumn  Width="25*"  Header="Диагноз" x:Name="dignosisDGT" Binding="{Binding dignosisD}" FontFamily="Roboto" FontSize="16"/>
+                    <DataGridTextColumn  Width="25*"  Header="Лечение"  x:Name="therapyDGT" Binding="{Binding therapyD}" FontFamily="Roboto" FontSize="16"/>
+                    <DataGridTextColumn  Width="30*"  Header="Рекомендации" x:Name="recommendationsDGT" Binding="{Binding recommendationsD}" FontFamily="Roboto" FontSize="16"/>
+                    <DataGridTextColumn  Width="30*"  Header="Врач" x:Name="doctorDGT" Binding="{Binding doctorD}" FontFamily="Roboto" FontSize="16"/>
+                </DataGrid.Columns>
+            </DataGrid>
+        </Grid>
+
+        <Grid Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="5" Background="#FFFAFAFA">
+            
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="10"/>
+                <ColumnDefinition Width="165"/>
+                <ColumnDefinition Width="70"/>
+                <ColumnDefinition Width="13*"/>
+                <ColumnDefinition Width="10*"/>
+                <ColumnDefinition Width="10*"/>
+                <ColumnDefinition Width="13*"/>
+                <ColumnDefinition Width="185"/>
+                <ColumnDefinition Width="105"/>
+            </Grid.ColumnDefinitions>
+
+            <Rectangle Margin="0,0,0,0" VerticalAlignment="Top" Grid.ColumnSpan="9" Height="3"  Fill="#FF302E37" />
+
+            <Grid Grid.Column="1">
+                <TextBlock Text="Дата посещения" Style="{StaticResource PatientTextBlockTheme}"/>
+                <DatePicker SelectedDateFormat="Short" FontSize="18" VerticalAlignment="Bottom" HorizontalAlignment="Stretch" Margin="2,4,10,15" BorderBrush="Black" Background="Transparent" Foreground="Black" FontFamily="Roboto" x:Name="VisitDateDate"/>
+            </Grid>
+            
+            <Grid Grid.Column="2">
+                <TextBlock Text="Время" Style="{StaticResource PatientTextBlockTheme}"/>
+                <TextBox Text="00:00" Style="{StaticResource PatientTextBoxTheme}" Margin="2,4,10,15" x:Name="VisitTimeBox"/>
+            </Grid>
+            
+            <Grid Grid.Column="3">
+                <TextBlock Text="Жалоба" Style="{StaticResource PatientTextBlockTheme}"/>
+                <TextBox Text="" Style="{StaticResource PatientTextBoxTheme}" Margin="2,4,10,15" x:Name="ComplaintBox"/>
+            </Grid>
+            
+            <Grid Grid.Column="4">
+                <TextBlock Text="Диагноз" Style="{StaticResource PatientTextBlockTheme}"/>
+                <TextBox Text="" Style="{StaticResource PatientTextBoxTheme}" Margin="2,4,10,15" x:Name="DiagnosisBox"/>
+            </Grid>
+            
+            <Grid Grid.Column="5">
+                <TextBlock Text="Лечение" Style="{StaticResource PatientTextBlockTheme}"/>
+                <TextBox Text="" Style="{StaticResource PatientTextBoxTheme}" Margin="2,4,10,15" x:Name="TherapyBox"/>
+            </Grid>
+            
+            <Grid Grid.Column="6">
+                <TextBlock Text="Рекомендации" Style="{StaticResource PatientTextBlockTheme}"/>
+                <TextBox Text="" Style="{StaticResource PatientTextBoxTheme}" Margin="2,4,10,15" x:Name="RecommendationBox"/>
+
+            </Grid>
+            
+            <Grid Grid.Column="7">
+                <TextBlock Text="Врач" Style="{StaticResource PatientTextBlockTheme}"/>
+                <ComboBox FontSize="18" VerticalAlignment="Bottom" HorizontalAlignment="Stretch" Margin="2,4,10,15" BorderBrush="Black" Background="Transparent" Foreground="Black" FontFamily="Roboto" x:Name="DentistCBox"/>
+
+            </Grid>
+
+            <Grid Grid.Column="8" Background="#FF454056">
+                <Button Content="Изменить" Style="{StaticResource DiarySaveButtonTheme}" Margin="0,3,0,0" x:Name="DiarySave_button" Click="DiarySave_Click"/>
+
+            </Grid>
+
+        </Grid>
+    </Grid>
+</UserControl>

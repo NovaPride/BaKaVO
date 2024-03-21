@@ -1,0 +1,26 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BaKaVO.Windows"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit" xmlns:Obselete="clr-namespace:Xceed.Wpf.Toolkit.Obselete;assembly=Xceed.Wpf.Toolkit" x:Class="BaKaVO.Windows.Anamnesis"
+        mc:Ignorable="d"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="13"
+        TextOptions.TextFormattingMode="Ideal"
+        TextOptions.TextRenderingMode="Auto"
+        FontFamily="{DynamicResource MaterialDesignFont}"
+        WindowStartupLocation="CenterScreen" 
+        MouseLeftButtonDown="DragWindow"
+
+        Title="Anamnesis" Height="632" Width="1265" ResizeMode="NoResize">
+
+    <Grid>
+        <xctk:MaskedTextBox Style="{StaticResource PatientTextBoxTheme}" Width="120"/>
+
+        <xctk:TimePicker Margin="678,225,225,278"  />
+
+    </Grid>
+</Window>
