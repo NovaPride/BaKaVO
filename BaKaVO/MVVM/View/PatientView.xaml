@@ -167,11 +167,11 @@
                 <DataGrid.Columns >
                     <DataGridTextColumn  Width="1" Header="№"  x:Name="idDGT" Binding="{Binding idD}" FontFamily="Roboto" FontSize="16" CanUserResize="False"/>
                     <DataGridTextColumn  Width="170"  Header="Дата"  x:Name="dateDGT" Binding="{Binding dateD}" FontFamily="Roboto" FontSize="16" CanUserResize="False"/>
-                    <DataGridTextColumn  Width="25*"  Header="Жалоба" x:Name="appealDGT" Binding="{Binding appealD}" FontFamily="Roboto" FontSize="16"/>
-                    <DataGridTextColumn  Width="25*"  Header="Диагноз" x:Name="dignosisDGT" Binding="{Binding dignosisD}" FontFamily="Roboto" FontSize="16"/>
-                    <DataGridTextColumn  Width="25*"  Header="Лечение"  x:Name="therapyDGT" Binding="{Binding therapyD}" FontFamily="Roboto" FontSize="16"/>
-                    <DataGridTextColumn  Width="30*"  Header="Рекомендации" x:Name="recommendationsDGT" Binding="{Binding recommendationsD}" FontFamily="Roboto" FontSize="16"/>
-                    <DataGridTextColumn  Width="30*"  Header="Врач" x:Name="doctorDGT" Binding="{Binding doctorD}" FontFamily="Roboto" FontSize="16"/>
+                    <DataGridTextColumn  Width="14*"  Header="Диагноз" x:Name="dignosisDGT" Binding="{Binding dignosisD}" FontFamily="Roboto" FontSize="16"/>
+                    <DataGridTextColumn  Width="10*"  Header="Лечение"  x:Name="therapyDGT" Binding="{Binding therapyD}" FontFamily="Roboto" FontSize="16"/>
+                    <DataGridTextColumn  Width="12*"  Header="Рекомендации" x:Name="recommendationsDGT" Binding="{Binding recommendationsD}" FontFamily="Roboto" FontSize="16"/>
+                    <DataGridTextColumn  Width="7*"  Header="Жалоба" x:Name="appealDGT" Binding="{Binding appealD}" FontFamily="Roboto" FontSize="16"/>
+                    <DataGridTextColumn  Width="7*"  Header="Врач" x:Name="doctorDGT" Binding="{Binding doctorD}" FontFamily="Roboto" FontSize="16"/>
                 </DataGrid.Columns>
             </DataGrid>
         </Grid>
@@ -182,11 +182,11 @@
                 <ColumnDefinition Width="10"/>
                 <ColumnDefinition Width="165"/>
                 <ColumnDefinition Width="70"/>
-                <ColumnDefinition Width="13*"/>
+                <ColumnDefinition Width="14*"/>
                 <ColumnDefinition Width="10*"/>
-                <ColumnDefinition Width="10*"/>
-                <ColumnDefinition Width="13*"/>
-                <ColumnDefinition Width="185"/>
+                <ColumnDefinition Width="12*"/>
+                <ColumnDefinition Width="7*"/>
+                <ColumnDefinition Width="150"/>
                 <ColumnDefinition Width="105"/>
             </Grid.ColumnDefinitions>
 
@@ -203,35 +203,32 @@
             </Grid>
             
             <Grid Grid.Column="3">
-                <TextBlock Text="Жалоба" Style="{StaticResource PatientTextBlockTheme}"/>
-                <TextBox Text="" Style="{StaticResource PatientTextBoxTheme}" Margin="2,4,10,15" x:Name="ComplaintBox"/>
-            </Grid>
-            
-            <Grid Grid.Column="4">
                 <TextBlock Text="Диагноз" Style="{StaticResource PatientTextBlockTheme}"/>
                 <TextBox Text="" Style="{StaticResource PatientTextBoxTheme}" Margin="2,4,10,15" x:Name="DiagnosisBox"/>
             </Grid>
             
-            <Grid Grid.Column="5">
+            <Grid Grid.Column="4">
                 <TextBlock Text="Лечение" Style="{StaticResource PatientTextBlockTheme}"/>
                 <TextBox Text="" Style="{StaticResource PatientTextBoxTheme}" Margin="2,4,10,15" x:Name="TherapyBox"/>
             </Grid>
-            
-            <Grid Grid.Column="6">
+
+            <Grid Grid.Column="5">
                 <TextBlock Text="Рекомендации" Style="{StaticResource PatientTextBlockTheme}"/>
                 <TextBox Text="" Style="{StaticResource PatientTextBoxTheme}" Margin="2,4,10,15" x:Name="RecommendationBox"/>
-
+            </Grid>
+            
+            <Grid Grid.Column="6">
+                <TextBlock Text="Жалоба" Style="{StaticResource PatientTextBlockTheme}"/>
+                <TextBox Text="" Style="{StaticResource PatientTextBoxTheme}" Margin="2,4,10,15" x:Name="ComplaintBox"/>
             </Grid>
             
             <Grid Grid.Column="7">
                 <TextBlock Text="Врач" Style="{StaticResource PatientTextBlockTheme}"/>
                 <ComboBox FontSize="18" VerticalAlignment="Bottom" HorizontalAlignment="Stretch" Margin="2,4,10,15" BorderBrush="Black" Background="Transparent" Foreground="Black" FontFamily="Roboto" x:Name="DentistCBox"/>
-
             </Grid>
 
             <Grid Grid.Column="8" Background="#FF454056">
                 <Button Content="Изменить" Style="{StaticResource DiarySaveButtonTheme}" Margin="0,3,0,0" x:Name="DiarySave_button" Click="DiarySave_Click"/>
-
             </Grid>
 
         </Grid>
