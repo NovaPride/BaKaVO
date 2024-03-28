@@ -154,7 +154,7 @@ namespace BaKaVO.MVVM.View
                 }
                 //MessageBox.Show(MonthToDay(BirthDate.SelectedDate.Value.Date.ToShortDateString()));
             }
-            catch { MessageBox.Show("Введите корректную информацию!"); return; }
+            catch { MessageBox.Show("Введите корректную информацию! 4"); return; }
         }
         private void Update()
         {
@@ -258,7 +258,7 @@ namespace BaKaVO.MVVM.View
         }
         private void OneTimeUpdate()
         {
-            FullnameBox.CommandBindings.Add(new CommandBinding(ApplicationCommands.Paste, OnPasteCommand));
+            FullnameBox.CommandBindings.Add(new CommandBinding(ApplicationCommands.Paste, OnPasteCommand));//важно
 
             using (SqlConnection conn = new SqlConnection(glob.connectionstring))
             {
@@ -328,7 +328,7 @@ namespace BaKaVO.MVVM.View
                     conn.Close();
                 }
             }
-            catch { MessageBox.Show("Введите корректную информацию!"); return; }
+            catch { MessageBox.Show("Введите корректную информацию! 2"); return; }
         }
         private void DiarySave_Click(object sender, RoutedEventArgs e)//фунция обновления данных в бд
         {
@@ -363,7 +363,7 @@ namespace BaKaVO.MVVM.View
                 }
                 Update();
             }
-            catch { MessageBox.Show("Введите корректную информацию!"); return; }
+            catch { MessageBox.Show("Введите корректную информацию! 3"); return; }
         }
         private void PatientView_SizeChanged(object sender, SizeChangedEventArgs e)
         {

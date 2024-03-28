@@ -58,7 +58,7 @@ namespace BaKaVO.MVVM.View
                     conn.Close();
                 }
             }
-            catch { MessageBox.Show("Введите корректную информацию!"); return; }
+            catch { MessageBox.Show("Введите корректную информацию! 5"); return; }
         }
         private void RadioButton_Fill(int question, string answer)
         {
@@ -108,7 +108,7 @@ namespace BaKaVO.MVVM.View
                 conn.Close();
                 Update();
             }
-            catch { MessageBox.Show("Введите корректную информацию!"); return; }
+            catch { MessageBox.Show("Введите корректную информацию! 6"); return; }
         }
 
         private void RadioButton_Click(object sender, RoutedEventArgs e)

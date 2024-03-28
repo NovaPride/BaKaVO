@@ -353,7 +353,7 @@ namespace BaKaVO.Windows
                     conn.Close();
                 }
             }
-            catch { MessageBox.Show("Введите корректную информацию!"); return; }
+            catch { MessageBox.Show("Введите корректную информацию! 8"); return; }
         }
 
         private void DiarySave_Click(object sender, RoutedEventArgs e)//фунция обновления данных в бд

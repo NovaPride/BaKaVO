@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BaKaVO.MVVM.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,6 +9,7 @@ using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
+using System.Windows.Markup;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
@@ -27,6 +29,12 @@ namespace BaKaVO.Windows
             glob.pat_id = 1;
             glob.curvi_id = 1;
             glob.myBase = this;
+            //Content="{Binding CurrentView}"
+            //Binding myBinding = new Binding("CurrentView");
+            //myBinding.Source = MainViewModel;
+            
+            //BaseContentControl.SetBinding(BaseContentControl.DataContext, myBinding);
+           // BaseContentControl.Content = "{Binding CurrentView}";
             this.WindowStyle = WindowStyle.ThreeDBorderWindow;
             this.MaxHeight = SystemParameters.MaximizedPrimaryScreenHeight;
         }

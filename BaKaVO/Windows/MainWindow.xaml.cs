@@ -48,7 +48,7 @@ namespace BaKaVO.Windows
                     conn.Close();
                 }
             }
-            catch { MessageBox.Show("Введите корректную информацию!"); return; }
+            catch { MessageBox.Show("Введите корректную информацию! 7"); return; }
         }
 
         private void PatientDataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)//функция обновления полей для заполнения при выделения строки в таблице

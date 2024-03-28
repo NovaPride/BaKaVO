@@ -23,12 +23,20 @@ namespace BaKaVO.MVVM.View
 {
     public partial class PatientListView : UserControl
     {
+        int curr_patlistpage;
+        int patientperpage;
+        int patientcount;
         public PatientListView()
         {
+            curr_patlistpage = 1;
+            patientperpage = 25;
             InitializeComponent();
             glob.myPatientListView = this;
             this.FontSize = 15;
+            //OneTimeUpdate();
             Update();
+            Console.WriteLine(patientcount);
+          
         }
         public void SaveButtonWasClicked() 
         {
@@ -40,23 +48,56 @@ namespace BaKaVO.MVVM.View
                
             }
         }
+
+        //private void OneTimeUpdate() {
+
+        //    using (SqlConnection conn = new SqlConnection(glob.connectionstring))
+        //    {
+        //        conn.Open();
+        //        string sql = "SELECT COUNT(DISTINCT ID_Patient) FROM Patient";
+        //        SqlCommand com = new SqlCommand(sql, conn);
+        //        using (SqlDataReader reader = com.ExecuteReader())
+        //        {
+        //            while (reader.Read())
+        //            {
+        //                patientcount = reader.GetInt32(0);
+        //            }
+        //        }
+        //        conn.Close();
+        //    }
+        //}
+
         private void Update()
         {
             try
             {
                 using (SqlConnection conn = new SqlConnection(glob.connectionstring))
                 {
-
-                    string reg = "SELECT ID_Patient as IDP, Fullname_Patient as NameP, PhoneNumber_Patient as PhoneP, CONVERT(varchar(10), FillingAt_Patient, 104) as FillingP FROM Patient";
+                    string reg = "SELECT ID_Patient as IDP, Fullname_Patient as NameP, PhoneNumber_Patient as PhoneP, CONVERT(varchar(10), FillingAt_Patient, 104) as FillingP FROM Patient " +
+                        $"ORDER BY ID_Patient " +
+                        $"OFFSET {(curr_patlistpage - 1) * patientperpage} ROWS " +
+                        $"FETCH NEXT {patientperpage} ROWS ONLY";
                     glob.adapt = new SqlDataAdapter(reg, conn);
                     conn.Open();
                     glob.dt = new System.Data.DataTable();
                     glob.adapt.Fill(glob.dt);
                     PatientListDataGrid.ItemsSource = glob.dt.DefaultView;
+
+                    string sql = "SELECT COUNT(DISTINCT ID_Patient) FROM Patient";
+                    SqlCommand com = new SqlCommand(sql, conn);
+                    using (SqlDataReader reader = com.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            patientcount = reader.GetInt32(0);
+                        }
+                    }
+                    int temp = patientcount > curr_patlistpage * patientperpage ? curr_patlistpage * patientperpage : patientcount;
+                    PageSelectBlock.Text = $"{1 + ((curr_patlistpage - 1) * patientperpage)}-{temp} из {patientcount}";
                     conn.Close();
                 }
             }
-            catch { MessageBox.Show("Введите корректную информацию!"); return; }
+            catch { MessageBox.Show("Введите корректную информацию ! 1"); return; }
         }
 
         private void PatientListDataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)//функция обновления полей для заполнения при выделения строки в таблице
@@ -79,7 +120,28 @@ namespace BaKaVO.MVVM.View
             if (this.ActualWidth > 1850) { this.FontSize = 17; }
             if (this.ActualWidth > 2400) { this.FontSize = 18; }
         }
+        private void FirstPage_Click(object sender, RoutedEventArgs e)
+        {
+            curr_patlistpage = 1;
+            Update();
+        }
+        private void PreviousPage_Click(object sender, RoutedEventArgs e)
+        {
+            if (curr_patlistpage > 1) { curr_patlistpage--; }
+            Update();
+        }
+        private void NextPage_Click(object sender, RoutedEventArgs e)
+        {
+            if (patientcount > curr_patlistpage * patientperpage) { curr_patlistpage++; }
+            Update();
+        }
+        private void LastPage_Click(object sender, RoutedEventArgs e)
+        {
+            int temp = (patientcount / patientperpage);
+            if (patientcount > temp * patientperpage) { temp++; }
+            curr_patlistpage = temp ;
+            Update();
+        }
 
-        
     }
 }
