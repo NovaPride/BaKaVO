@@ -1,8 +1,10 @@
 ﻿using BaKaVO.MVVM.ViewModel;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -37,6 +39,10 @@ namespace BaKaVO.Windows
            // BaseContentControl.Content = "{Binding CurrentView}";
             this.WindowStyle = WindowStyle.ThreeDBorderWindow;
             this.MaxHeight = SystemParameters.MaximizedPrimaryScreenHeight;
+            CultureInfo ci = CultureInfo.CreateSpecificCulture(CultureInfo.CurrentCulture.Name);
+            ci.DateTimeFormat.LongDatePattern = "dd.MM.yyyy"; //This can be used for one type of DatePicker
+            ci.DateTimeFormat.ShortDatePattern = "dd.MM.yy"; //for the second type
+            Thread.CurrentThread.CurrentCulture = ci;
         }
         public void switchView(int i)
         {

@@ -67,7 +67,7 @@
 
             <Grid Grid.Column="4">
                 <TextBlock Text="День рождения" Style="{StaticResource PatientTextBlockTheme}"/>
-                <DatePicker SelectedDateFormat="Short" FontSize="18" VerticalAlignment="Bottom" HorizontalAlignment="Stretch" Margin="2,4,10,10" BorderBrush="Black" Background="Transparent" Foreground="Black" FontFamily="Roboto" x:Name="BirthDate"/>
+                <DatePicker SelectedDateFormat="Long" FontSize="18" VerticalAlignment="Bottom" HorizontalAlignment="Stretch" Margin="2,4,10,10" BorderBrush="Black" Background="Transparent" Foreground="Black" FontFamily="Roboto" x:Name="BirthDate"/>
             </Grid>
 
             <Grid Grid.Column="5">
@@ -194,7 +194,7 @@
 
             <Grid Grid.Column="1">
                 <TextBlock Text="Дата посещения" Style="{StaticResource PatientTextBlockTheme}"/>
-                <DatePicker SelectedDateFormat="Short" FontSize="18" VerticalAlignment="Bottom" HorizontalAlignment="Stretch" Margin="2,4,10,15" BorderBrush="Black" Background="Transparent" Foreground="Black" FontFamily="Roboto" x:Name="VisitDateDate"/>
+                <DatePicker SelectedDateFormat="Long" FontSize="18" VerticalAlignment="Bottom" HorizontalAlignment="Stretch" Margin="2,4,10,15" BorderBrush="Black" Background="Transparent" Foreground="Black" FontFamily="Roboto" x:Name="VisitDateDate"/>
             </Grid>
             
             <Grid Grid.Column="2">
