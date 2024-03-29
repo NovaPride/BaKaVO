@@ -10,6 +10,7 @@
              Background="White"
              SizeChanged="PatientView_SizeChanged">
     <Grid>
+        
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="10"/>
             <ColumnDefinition Width="0" x:Name="FirstColumn"/>
@@ -139,8 +140,9 @@
 
         <Grid Grid.Row="2" Grid.Column="3" IsHitTestVisible="False" x:Name="Grid3">
             <TextBox FontSize="18" TextWrapping="Wrap"  AcceptsReturn="True" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" BorderThickness="1" Padding="0" Margin="10,0,1,1" BorderBrush="Black" Background="Transparent" Foreground="Black" FontFamily="Roboto" x:Name="CommentBox"/>
+            
         </Grid>
-
+        
         <Grid Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="3">
             <DataGrid 
              x:Name="DiaryDataGrid" 
@@ -169,7 +171,15 @@
                     <DataGridTextColumn  Width="7*"  Header="Цена" x:Name="priceDGT" Binding="{Binding priceD}" FontFamily="Roboto" FontSize="16"/>
                     <DataGridTextColumn  Width="7*"  Header="Врач" x:Name="doctorDGT" Binding="{Binding doctorD}" FontFamily="Roboto" FontSize="16"/>
                 </DataGrid.Columns>
+                <DataGrid.ContextMenu>
+                    <ContextMenu x:Name="DiaryDataGrid_ContextMenu">
+                        <MenuItem Header="Новый приём"
+                          Click="MenuItem_Click"
+                          CommandParameter="{Binding RelativeSource={RelativeSource Self}, Path=Parent}"/>
+                    </ContextMenu>
+                </DataGrid.ContextMenu>
             </DataGrid>
+            
         </Grid>
 
         <Grid Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="5" Background="#FFFAFAFA">

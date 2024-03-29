@@ -60,6 +60,7 @@ namespace BaKaVO.MVVM.View
             };
             datagrid.ItemsSource = Xmas;
             isDiaryOpen = false;
+            DiaryDataGrid_ContextMenu.Visibility = Visibility.Hidden;
             Update();
             OneTimeUpdate();
         }
@@ -68,6 +69,8 @@ namespace BaKaVO.MVVM.View
             Grid1.IsHitTestVisible = glob.issaveclicked;
             Grid2.IsHitTestVisible = glob.issaveclicked;
             Grid3.IsHitTestVisible = glob.issaveclicked;
+            DiaryDataGrid_ContextMenu.Visibility = Visibility.Visible;
+            
             if (!glob.issaveclicked)
             { 
                 Save();
@@ -75,6 +78,7 @@ namespace BaKaVO.MVVM.View
                 LastRow.Height = new GridLength(0);
                 
                 DiaryDataGrid.IsHitTestVisible = true;
+                DiaryDataGrid_ContextMenu.Visibility = Visibility.Hidden;
             }
         }
         private void Save()//фунция обновления данных в бд
@@ -302,6 +306,28 @@ namespace BaKaVO.MVVM.View
             }
             catch { }
         }
+        private void MenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                if (glob.issaveclicked)
+                {
+                    using (SqlConnection conn = new SqlConnection(glob.connectionstring))
+                    {
+                        conn.Open();
+                        //insert new diary
+                        string newPat = $"INSERT INTO Diary (Complaint_Diary, Diagnosis_Diary, Treatment_Diary, Recomendation_Diary, Price_Diary, ID_Dentist_Dia, ID_Patient_Dia) VALUES " +
+                            $"(N'', N'', N'', N'', N'', 1, {glob.pat_id});";
+                        SqlCommand com = new SqlCommand(newPat, conn);
+                        com.ExecuteNonQuery();
+                        glob.diarydb.SaveChanges();
+                        conn.Close();
+                        Save();
+                    }
+                }
+            }
+            catch { }
+        }
         private void DiaryDataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)//функция обновления полей для заполнения при выделения строки в таблице
         {
             try
@@ -362,10 +388,8 @@ namespace BaKaVO.MVVM.View
                     savecom.ExecuteNonQuery();
                     glob.diarydb.SaveChanges();
                     conn.Close();
-
                 }
                 Save();
-                Update();
             }
             catch { MessageBox.Show("Введите корректную информацию! 3"); return; }
         }
@@ -396,6 +420,8 @@ namespace BaKaVO.MVVM.View
         {
             MessageBox.Show("Ручками пиши");
         }
+
+
 
         //private void TextBox_KeyDown(object sender, KeyEventArgs e)
         //{
