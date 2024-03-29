@@ -361,6 +361,7 @@ namespace BaKaVO.MVVM.View
                     conn.Close();
 
                 }
+                Save();
                 Update();
             }
             catch { MessageBox.Show("Введите корректную информацию! 3"); return; }
