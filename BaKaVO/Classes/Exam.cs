@@ -15,7 +15,7 @@ namespace BaKaVO.Classes
         public int ID_Exam { get; set; } //id
         public byte Num_Exam { get; set; } //первый/второй/третий осмотр (1/2/3)
         public bool Bit_Exam { get; set; } //верхняя/нижняя челюсть (0 - верхний, 1 нижний)
-        public DateTime Date_Exam { get; set; } //дата осмотра (надо ли?) //блять))
+        public DateTime Date_Exam { get; set; } //дата осмотра
 
         //левая и правая сторона как на бумаге! а не в жизни, левая 18-11 и 48-41, правая 21-28 и 31-38
         

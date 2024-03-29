@@ -24,6 +24,7 @@ namespace BaKaVO.Classes
         public string Ninth_Anamnesis { get; set; }  //да/нет для 9 строки и данные если да
         public string Tenth_Anamnesis { get; set; } //да/нет для 10 строки и данные если да
         public string Other_Anamnesis { get; set; } //дополнительные данные
+        public int ID_Patient_Ana { get; set; }
 
         public Anamnesis() { }
 
@@ -38,7 +39,8 @@ namespace BaKaVO.Classes
             string Eighth_Anamnesis, 
             string Ninth_Anamnesis, 
             string Tenth_Anamnesis, 
-            string Other_Anamnesis)
+            string Other_Anamnesis,
+            int ID_Patient_Ana)
         {
             this.First_Anamnesis = First_Anamnesis;
             this.Second_Anamnesis = Second_Anamnesis;
@@ -51,6 +53,7 @@ namespace BaKaVO.Classes
             this.Ninth_Anamnesis = Ninth_Anamnesis;
             this.Tenth_Anamnesis = Tenth_Anamnesis;
             this.Other_Anamnesis = Other_Anamnesis;
+            this.ID_Patient_Ana = ID_Patient_Ana;
         }
     }
 }

@@ -14,7 +14,6 @@ namespace BaKaVO.Classes
         [Key]
         public int ID_Patient { get; set; } //id
         public string Fullname_Patient { get; set; } //полное имя
-        public DateTime FillingAt_Patient { get; set; } //дата заполнения, изначально дает значения датывремя когда создан объект
         public DateTime BirthDate_Patient { get; set; } //день рождения
         public string Domicile_Patient { get; set; } //место проживания
         public string PhoneNumber_Patient { get; set; } //номер телефона
@@ -26,7 +25,6 @@ namespace BaKaVO.Classes
 
         public Patient(
             string Fullname_Patient,
-            DateTime FillingAt_Patient,
             DateTime BirthDate_Patient,
             string Domicile_Patient, 
             string PhoneNumber_Patient,
@@ -35,7 +33,6 @@ namespace BaKaVO.Classes
             int ID_Anamnesis_Pat)
         {
             this.Fullname_Patient = Fullname_Patient;
-            this.FillingAt_Patient = FillingAt_Patient;
             this.BirthDate_Patient = BirthDate_Patient;
             this.Domicile_Patient = Domicile_Patient;
             this.PhoneNumber_Patient = PhoneNumber_Patient;

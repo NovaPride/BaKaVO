@@ -88,7 +88,6 @@ namespace BaKaVO.MVVM.View
                         "Fullname_Patient = N'" + FullnameBox.Text +
                         "', PhoneNumber_Patient = N'" + PhoneNumberBox.Text +
                         "', Domicile_Patient = N'" + DomicileBox.Text +
-                        "', FillingAt_Patient = N'" + MonthToDay(FillingAtDate.SelectedDate.Value.Date.ToShortDateString()) +
                         "', BirthDate_Patient = N'" + MonthToDay(BirthDate.SelectedDate.Value.Date.ToShortDateString()) +
                         "', Bite_Patient = " + BiteCBox.SelectedIndex.ToString() +
                         ", Comment_Patient = N'" + CommentBox.Text +
@@ -162,7 +161,7 @@ namespace BaKaVO.MVVM.View
             {
                 //база
                 conn.Open();
-                string sql = "SELECT Fullname_Patient, PhoneNumber_Patient, Domicile_Patient, FillingAt_Patient, BirthDate_Patient, Bite_Patient, Comment_Patient FROM Patient WHERE ID_Patient = " + glob.pat_id.ToString();
+                string sql = "SELECT Fullname_Patient, PhoneNumber_Patient, Domicile_Patient, BirthDate_Patient, Bite_Patient, Comment_Patient FROM Patient WHERE ID_Patient = " + glob.pat_id.ToString();
                 SqlCommand com = new SqlCommand(sql, conn);
                 using (SqlDataReader reader = com.ExecuteReader())
                 {
@@ -171,17 +170,16 @@ namespace BaKaVO.MVVM.View
                         FullnameBox.Text = reader.GetString(0);
                         PhoneNumberBox.Text = reader.GetString(1);
                         DomicileBox.Text = reader.GetString(2);
-                        FillingAtDate.SelectedDate = reader.GetDateTime(3);
-                        BirthDate.SelectedDate = reader.GetDateTime(4);
-                        BiteCBox.SelectedIndex = reader.GetByte(5);
-                        CommentBox.Text = reader.GetString(6);
+                        BirthDate.SelectedDate = reader.GetDateTime(3);
+                        BiteCBox.SelectedIndex = reader.GetByte(4);
+                        CommentBox.Text = reader.GetString(5);
                     }
                 }
                 conn.Close();
 
                 //дневник
                 string reg = "SELECT ID_Diary as idD, CONCAT(CONVERT(varchar(10), Date_Diary, 104), '  ' , CONVERT(varchar(5), Date_Diary, 8)) as dateD, Complaint_Diary as appealD, Diagnosis_Diary as dignosisD, " +
-                    "Treatment_Diary as therapyD, Recomendation_Diary as recommendationsD, " +
+                    "Treatment_Diary as therapyD, Price_Diary as priceD, Recomendation_Diary as recommendationsD, " +
                     "Dentist.Fullname_Dentist as doctorD FROM Diary " +
                     "JOIN Patient ON ID_Patient_Dia = Patient.ID_Patient " +
                     "JOIN Dentist ON ID_Dentist_Dia = Dentist.ID_Dentist " +
@@ -310,7 +308,7 @@ namespace BaKaVO.MVVM.View
                 {
                     DataRowView h = DiaryDataGrid.SelectedItems[0] as DataRowView;
                     conn.Open();
-                    string sql = "SELECT CONVERT(varchar(10), Date_Diary, 104), CONVERT(varchar(5), Date_Diary, 8), Complaint_Diary, Diagnosis_Diary, Treatment_Diary, Recomendation_Diary, ID_Dentist_Dia FROM Diary WHERE ID_Diary = " + h.Row[0].ToString();
+                    string sql = "SELECT CONVERT(varchar(10), Date_Diary, 104), CONVERT(varchar(5), Date_Diary, 8), Complaint_Diary, Diagnosis_Diary, Treatment_Diary, Recomendation_Diary, Price_Diary, ID_Dentist_Dia FROM Diary WHERE ID_Diary = " + h.Row[0].ToString();
                     SqlCommand com = new SqlCommand(sql, conn);
                     using (SqlDataReader reader = com.ExecuteReader())
                     {
@@ -322,7 +320,8 @@ namespace BaKaVO.MVVM.View
                             DiagnosisBox.Text = reader.GetString(3);
                             TherapyBox.Text = reader.GetString(4);
                             RecommendationBox.Text = reader.GetString(5);
-                            DentistCBox.SelectedIndex = reader.GetInt32(6) - 1;
+                            PriceBox.Text = reader.GetString(5);
+                            DentistCBox.SelectedIndex = reader.GetInt32(7) - 1;
                         }
                     }
                     conn.Close();
@@ -352,6 +351,7 @@ namespace BaKaVO.MVVM.View
                         "',  Diagnosis_Diary = N'" + DiagnosisBox.Text +
                         "',  Treatment_Diary = N'" + TherapyBox.Text +
                         "',  Recomendation_Diary = N'" + RecommendationBox.Text +
+                        "',  Price_Diary = N'" + PriceBox.Text +
                         "', ID_Dentist_Dia = " + (DentistCBox.SelectedIndex + 1).ToString() +
                         " WHERE ID_Diary = " + h.Row[0].ToString(); ;
                     conn.Open();

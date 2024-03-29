@@ -14,13 +14,13 @@
         Background="{DynamicResource MaterialDesignPaper}"
         FontFamily="{DynamicResource MaterialDesignFont}"
         WindowStartupLocation="CenterScreen" 
-        MouseLeftButtonDown="DragWindow"
+        
         WindowStyle="None"
         Title="MainWindow" Height="932" Width="1600">
     <WindowChrome.WindowChrome>
         <WindowChrome GlassFrameThickness="0" CornerRadius="0" CaptionHeight="0"/>
     </WindowChrome.WindowChrome>
-    <Grid>
+    <!-- <Grid>
         <Grid Margin="0,0,0,900">
             <Rectangle Height="32" VerticalAlignment="Top" Fill="#FF302E37"/>
             <TextBlock VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0,3,52,0"  Padding="0" Text="□"  FontSize="22" Foreground="#DDFFFFFF" Height="24" Width="14"/>
@@ -56,5 +56,5 @@
                 </DataGrid.Columns>
             </DataGrid>
         </Grid>
-    </Grid>
+    </Grid>-->
 </Window>

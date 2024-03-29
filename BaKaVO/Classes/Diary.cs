@@ -18,6 +18,7 @@ namespace BaKaVO.Classes
         public string Diagnosis_Diary { get; set; } //диагноз
         public string Treatment_Diary { get; set; } //лечение
         public string Recomendation_Diary { get; set; } //рекомендации
+        public string Price_Diary { get; set; } //цена
         public int ID_Dentist_Dia { get; set; }
         public int ID_Patient_Dia { get; set; }
 
@@ -29,6 +30,7 @@ namespace BaKaVO.Classes
             string Diagnosis_Diary,
             string Treatment_Diary, 
             string Recomendation_Diary,
+            string Price_Diary,
             int ID_Dentist_Dia,
             int ID_Patient_Dia)
         {
@@ -37,6 +39,7 @@ namespace BaKaVO.Classes
             this.Diagnosis_Diary = Diagnosis_Diary;
             this.Treatment_Diary = Treatment_Diary;
             this.Recomendation_Diary = Recomendation_Diary;
+            this.Price_Diary = Price_Diary;
             this.ID_Dentist_Dia = ID_Dentist_Dia;
             this.ID_Patient_Dia = ID_Patient_Dia;
         }
