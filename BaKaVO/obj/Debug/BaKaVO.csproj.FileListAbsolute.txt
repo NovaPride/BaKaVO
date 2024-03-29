@@ -30,14 +30,8 @@ C:\Users\novap\source\repos\BaKaVO\BaKaVO\obj\Debug\BaKaVO.csproj.CoreCompileInp
 C:\Users\novap\source\repos\BaKaVO\BaKaVO\obj\Debug\BaKaVO.csproj.CopyComplete
 C:\Users\novap\source\repos\BaKaVO\BaKaVO\obj\Debug\BaKaVO.exe
 C:\Users\novap\source\repos\BaKaVO\BaKaVO\obj\Debug\BaKaVO.pdb
-C:\Users\novap\source\repos\BaKaVO\BaKaVO\obj\Debug\Windows\MainWindow.g.cs
 C:\Users\novap\source\repos\BaKaVO\BaKaVO\obj\Debug\ProjFiles\App.g.cs
 C:\Users\novap\source\repos\BaKaVO\BaKaVO\obj\Debug\ProjFiles\App.baml
-C:\Users\novap\source\repos\BaKaVO\BaKaVO\obj\Debug\Windows\MainWindow.baml
-C:\Users\novap\source\repos\BaKaVO\BaKaVO\obj\Debug\Windows\Anamnesis.g.cs
-C:\Users\novap\source\repos\BaKaVO\BaKaVO\obj\Debug\Windows\PatientWin.g.cs
-C:\Users\novap\source\repos\BaKaVO\BaKaVO\obj\Debug\Windows\Anamnesis.baml
-C:\Users\novap\source\repos\BaKaVO\BaKaVO\obj\Debug\Windows\PatientWin.baml
 C:\Users\novap\source\repos\BaKaVO\BaKaVO\obj\Debug\Windows\Base.g.cs
 C:\Users\novap\source\repos\BaKaVO\BaKaVO\obj\Debug\Windows\Base.baml
 C:\Users\novap\source\repos\BaKaVO\BaKaVO\obj\Debug\Theme\LeftMenuButtonTheme.baml

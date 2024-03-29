@@ -5,7 +5,7 @@
              xmlns:viewModel="clr-namespace:BaKaVO.MVVM.ViewModel"
              xmlns:view="clr-namespace:BaKaVO.MVVM.View"
              xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
-             StartupUri="../Windows/MainWindow.xaml">
+             StartupUri="../Windows/Base.xaml">
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
