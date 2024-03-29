@@ -35,8 +35,6 @@ namespace BaKaVO.MVVM.View
             this.FontSize = 15;
             //OneTimeUpdate();
             Update();
-            Console.WriteLine(patientcount);
-          
         }
         public void SaveButtonWasClicked() 
         {
@@ -73,7 +71,7 @@ namespace BaKaVO.MVVM.View
             {
                 using (SqlConnection conn = new SqlConnection(glob.connectionstring))
                 {
-                    string reg = "SELECT ID_Patient as IDP, Fullname_Patient as NameP, PhoneNumber_Patient as PhoneP, CONVERT(varchar(10), FillingAt_Patient, 104) as FillingP FROM Patient " +
+                    string reg = "SELECT ID_Patient as IDP, Fullname_Patient as NameP, PhoneNumber_Patient as PhoneP, CONVERT(varchar(10), FillingAt_Patient, 104) as FillingP, SUBSTRING(Comment_Patient, 1, 200) as CommentP FROM Patient " +
                         $"ORDER BY ID_Patient " +
                         $"OFFSET {(curr_patlistpage - 1) * patientperpage} ROWS " +
                         $"FETCH NEXT {patientperpage} ROWS ONLY";

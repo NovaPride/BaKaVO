@@ -98,8 +98,9 @@
                 <DataGrid.Columns >
                     <DataGridTextColumn  Width="25" Header="№"  x:Name="IDPat" Binding="{Binding IDP}" FontFamily="Roboto" CanUserResize="False"/>
                     <DataGridTextColumn  Width="250"  Header="Имя"  x:Name="NamePat" Binding="{Binding NameP}" FontFamily="Roboto"/>
-                    <DataGridTextColumn  Width="250"  Header="Телефон" x:Name="PhonePat" Binding="{Binding PhoneP}" FontFamily="Roboto"/>
-                    <DataGridTextColumn  Width="250"  Header="Дата заполнения" x:Name="FillingPat" Binding="{Binding FillingP}" FontFamily="Roboto"/>
+                    <DataGridTextColumn  Width="150"  Header="Телефон" x:Name="PhonePat" Binding="{Binding PhoneP}" FontFamily="Roboto"/>
+                    <DataGridTextColumn  Width="150"  Header="Дата заполнения" x:Name="FillingPat" Binding="{Binding FillingP}" FontFamily="Roboto"/>
+                    <DataGridTextColumn  Width="1*"  Header="Комментарий" x:Name="CommentPat" Binding="{Binding CommentP}" FontFamily="Roboto"/>
                 </DataGrid.Columns>
             </DataGrid>
         </Grid>
