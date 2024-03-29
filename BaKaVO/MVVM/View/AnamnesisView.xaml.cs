@@ -45,7 +45,10 @@ namespace BaKaVO.MVVM.View
                 using (SqlConnection conn = new SqlConnection(glob.connectionstring))
                 {
                     conn.Open();
-                    string sql = "SELECT ID_Anamnesis, First_Anamnesis, Second_Anamnesis, Third_Anamnesis, Fourth_Anamnesis, Fifth_Anamnesis, Sixth_Anamnesis, Seventh_Anamnesis, Eighth_Anamnesis, Ninth_Anamnesis, Tenth_Anamnesis, Other_Anamnesis FROM Anamnesis WHERE ID_Anamnesis = " + glob.pat_id.ToString();
+                    string sql = "SELECT ID_Anamnesis, First_Anamnesis, Second_Anamnesis, Third_Anamnesis, Fourth_Anamnesis, Fifth_Anamnesis, Sixth_Anamnesis, Seventh_Anamnesis, Eighth_Anamnesis, Ninth_Anamnesis, Tenth_Anamnesis, Other_Anamnesis, ID_Anamnesis " +
+                        "FROM Anamnesis " +
+                        "JOIN Patient ON ID_Patient_Ana = Patient.ID_Patient " +
+                        "WHERE ID_Patient = " + glob.pat_id.ToString();
                     SqlCommand com = new SqlCommand(sql, conn);
                     using (SqlDataReader reader = com.ExecuteReader())
                     {
@@ -53,6 +56,7 @@ namespace BaKaVO.MVVM.View
                         {
                             for (int i = 1; i < 11; i++) { RadioButton_Fill(i, reader.GetString(i)); }
                             TextBox11.Text = reader.GetString(11);
+                            IDLabel.Content = reader.GetInt32(12).ToString();
                         }
                     }
                     conn.Close();
@@ -100,7 +104,8 @@ namespace BaKaVO.MVVM.View
                     + "',  Ninth_Anamnesis = N'" + TextBox9.Text
                     + "',  Tenth_Anamnesis = N'" + TextBox10.Text
                     + "',  Other_Anamnesis = N'" + TextBox11.Text
-                    + "' WHERE ID_Anamnesis = " + glob.pat_id.ToString();
+                    + "' WHERE ID_Anamnesis = " + IDLabel.Content.ToString();
+                    
 
                 SqlCommand savecom = new SqlCommand(save, conn);
                 savecom.ExecuteNonQuery();

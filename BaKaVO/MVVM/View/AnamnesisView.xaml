@@ -7,7 +7,7 @@
              mc:Ignorable="d" 
              d:DesignHeight="645" d:DesignWidth="1280"
              SizeChanged="AnamnesisView_SizeChanged">
-    <Grid IsHitTestVisible="False" x:Name="FullGrid">
+    <Grid IsHitTestVisible="False" x:Name="FullGrid" Background="Aqua">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="10"/>
             <ColumnDefinition Width="32*"/>
@@ -35,6 +35,7 @@
         </Grid.RowDefinitions>
 
         <!-- Left Column -->
+        <Label Grid.Row="0" Grid.Column="0" Content="id" Style="{StaticResource LabelWithBorderTheme}" Visibility="Hidden" x:Name="IDLabel"/>
         <Label Grid.Row="1" Grid.Column="1" Content="" Style="{StaticResource LabelWithBorderTheme}"/>
         <Label Grid.Row="2" Grid.Column="1" Content="Заболевание сердечно-сосудистой системы" Style="{StaticResource LabelWithBorderTheme}"/>
         <Label Grid.Row="3" Grid.Column="1" Content="Заболевание нервной системы" Style="{StaticResource LabelWithBorderTheme}"/>

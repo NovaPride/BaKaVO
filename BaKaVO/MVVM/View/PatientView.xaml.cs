@@ -104,7 +104,10 @@ namespace BaKaVO.MVVM.View
                     int i = 0;
                     int j = 0;
                     conn.Open();
-                    string sql = "SELECT ID_Exam FROM Exam WHERE ID_Patient_Exa = " + glob.pat_id.ToString();
+                    string sql = "SELECT ID_Exam " +
+                        "FROM Exam " +
+                        "JOIN Patient ON ID_Patient_Exa = Patient.ID_Patient " +
+                        "WHERE ID_Patient = " + glob.pat_id.ToString();
                     SqlCommand com = new SqlCommand(sql, conn);
                     int[] ex_id = new int[6];
                     using (SqlDataReader reader = com.ExecuteReader())
