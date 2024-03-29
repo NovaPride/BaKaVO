@@ -23,17 +23,23 @@
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="400" x:Name="SearchColumn"/>
                 <ColumnDefinition Width="50"/>
-                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="3*"/>
+                <ColumnDefinition Width="10*"/>
+                <ColumnDefinition Width="8*"/>
                 <ColumnDefinition Width="350"/>
             </Grid.ColumnDefinitions>
             
             <TextBox Grid.Column="0" Text=""  Style="{StaticResource PatientTextBoxTheme}" Margin="2,4,10,5" x:Name="SearchBox"/>
-            
+
             <Grid Grid.Column="1" Background="#FF454056" Margin="3,5,3,5">
                 <Button Content="➤" Style="{StaticResource DiarySaveButtonTheme}" x:Name="Search_button"/>
             </Grid>
 
-            <Grid Grid.Column="4" Background="#35353A" >
+            <Grid Grid.Column="3" Background="#FF454056" Margin="3,5,3,5">
+                <Button Content="Новый пациент" Style="{StaticResource DiarySaveButtonTheme}" x:Name="AddNewPatient_button" Click="AddNewPatient_Click"/>
+            </Grid>
+
+            <Grid Grid.Column="5" Background="#FF302E37" >
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="1*"/>
                     <ColumnDefinition Width="1*"/>
@@ -96,7 +102,7 @@
                 DataGrid.SelectionChanged="PatientListDataGrid_SelectionChanged"
                 MouseDoubleClick="PatientListDataGrid_MouseDoubleClick">
                 <DataGrid.Columns >
-                    <DataGridTextColumn  Width="25" Header="№"  x:Name="IDPat" Binding="{Binding IDP}" FontFamily="Roboto" CanUserResize="False"/>
+                    <DataGridTextColumn  Width="1" Header="№"  x:Name="IDPat" Binding="{Binding IDP}" FontFamily="Roboto" CanUserResize="False"/>
                     <DataGridTextColumn  Width="250"  Header="Имя"  x:Name="NamePat" Binding="{Binding NameP}" FontFamily="Roboto"/>
                     <DataGridTextColumn  Width="150"  Header="Телефон" x:Name="PhonePat" Binding="{Binding PhoneP}" FontFamily="Roboto"/>
                     <DataGridTextColumn  Width="1*"  Header="Комментарий" x:Name="CommentPat" Binding="{Binding CommentP}" FontFamily="Roboto"/>

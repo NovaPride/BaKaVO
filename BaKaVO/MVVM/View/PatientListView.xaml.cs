@@ -140,6 +140,61 @@ namespace BaKaVO.MVVM.View
             curr_patlistpage = temp ;
             Update();
         }
+        private void AddNewPatient_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(glob.connectionstring))
+                {
+                    SqlCommand com;
+                    int lastPID = -1;
 
+                    conn.Open();
+
+                    //insert patient
+                    string newPat = $"INSERT INTO Patient (Fullname_Patient, Domicile_Patient, PhoneNumber_Patient, Bite_Patient, Comment_Patient) VALUES " +
+                        $"(N'', N'', N'', 1, N''); ";
+                    com = new SqlCommand(newPat, conn);
+                    com.ExecuteNonQuery();
+                    glob.patientdb.SaveChanges();
+
+                    //find last patient id
+                    string sqlLastPID = "SELECT MAX(ID_Patient) FROM Patient";
+                    com = new SqlCommand(sqlLastPID, conn);
+                    using (SqlDataReader reader = com.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            lastPID = reader.GetInt32(0);
+                        }
+                    }
+
+                    //create anamnesis and bound it to lastPID
+                    string newAna = $"INSERT INTO Anamnesis (First_Anamnesis, Second_Anamnesis, Third_Anamnesis, Fourth_Anamnesis, Fifth_Anamnesis, Sixth_Anamnesis, Seventh_Anamnesis, Eighth_Anamnesis, Ninth_Anamnesis, Tenth_Anamnesis, Other_Anamnesis, ID_Patient_Ana) VALUES " +
+                        $"(N'', N'', N'', N'', N'', N'', N'', N'', N'', N'', N'', {lastPID})";
+                    com = new SqlCommand(newAna, conn);
+                    com.ExecuteNonQuery();
+                    glob.anamnesisdb.SaveChanges();
+
+                    //create exam x6 and bound it to lastPID
+                    string newExa = $"INSERT INTO Exam (Num_Exam, Bit_Exam, Left_First_Exam, Left_Second_Exam, Left_Third_Exam, Left_Fourth_Exam, Left_Fifth_Exam, Left_Sixth_Exam, Left_Seventh_Exam, Left_Eighth_Exam, Right_First_Exam, Right_Second_Exam, Right_Third_Exam, Right_Fourth_Exam, Right_Fifth_Exam, Right_Sixth_Exam, Right_Seventh_Exam, Right_Eighth_Exam, ID_Patient_Exa) VALUES " +
+                        $"(3, 0, N'', N'', N'', N'', N'', N'', N'', N'', N'', N'', N'', N'', N'', N'', N'', N'', {lastPID}), " +
+                        $"(2, 0, N'', N'', N'', N'', N'', N'', N'', N'', N'', N'', N'', N'', N'', N'', N'', N'', {lastPID}), " +
+                        $"(1, 0, N'', N'', N'', N'', N'', N'', N'', N'', N'', N'', N'', N'', N'', N'', N'', N'', {lastPID}), " +
+                        $"(1, 1, N'', N'', N'', N'', N'', N'', N'', N'', N'', N'', N'', N'', N'', N'', N'', N'', {lastPID}), " +
+                        $"(2, 1, N'', N'', N'', N'', N'', N'', N'', N'', N'', N'', N'', N'', N'', N'', N'', N'', {lastPID}), " +
+                        $"(3, 1, N'', N'', N'', N'', N'', N'', N'', N'', N'', N'', N'', N'', N'', N'', N'', N'', {lastPID});";
+                    com = new SqlCommand(newExa, conn);
+                    com.ExecuteNonQuery();
+                    glob.examdb.SaveChanges();
+
+                    conn.Close();
+
+                    Update();
+                }
+            }
+            catch { }
+            
+        }
     }
 }

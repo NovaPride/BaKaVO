@@ -7,7 +7,7 @@
              mc:Ignorable="d" 
              d:DesignHeight="645" d:DesignWidth="1280"
              SizeChanged="AnamnesisView_SizeChanged">
-    <Grid IsHitTestVisible="False" x:Name="FullGrid" Background="Aqua">
+    <Grid IsHitTestVisible="False" x:Name="FullGrid">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="10"/>
             <ColumnDefinition Width="32*"/>
