@@ -10,7 +10,7 @@
              Background="White"
              SizeChanged="PatientView_SizeChanged">
     <Grid>
-        
+
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="10"/>
             <ColumnDefinition Width="0" x:Name="FirstColumn"/>
@@ -74,7 +74,175 @@
         </Grid>
 
         <Grid Grid.Row="2" Grid.Column="1" >
-            <Image Margin="0,0,10,0" VerticalAlignment="Center" HorizontalAlignment="Center" Source="../../Pics/Crib.png" />
+            <Grid Margin="0,0,5,0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="7*"/>
+                    <RowDefinition Height="2*"/>
+                </Grid.RowDefinitions>
+
+                <Border Grid.Row="0" BorderBrush="Black" BorderThickness="1" >
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="5*"/>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="1*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="2*"/>
+                            <RowDefinition Height="1*"/>
+                            <RowDefinition Height="1*"/>
+                            <RowDefinition Height="1*"/>
+                            <RowDefinition Height="1*"/>
+                            <RowDefinition Height="1*"/>
+                            <RowDefinition Height="1*"/>
+                            <RowDefinition Height="3*"/>
+                        </Grid.RowDefinitions>
+
+                        <!--Header-->
+                        <Border Grid.Row="0" Grid.Column="0" BorderBrush="Black" BorderThickness="1" Margin="-1, -1, 0, 0">
+                            <TextBlock Text="Состояния зубов" FontSize="16" Style="{StaticResource CribMainTextBlockTheme}"/>
+                        </Border>
+                        <Border Grid.Row="0" Grid.Column="1" BorderBrush="Black" BorderThickness="1" Margin="-1, -1, 0, 0">
+                            <TextBlock Text="Постоянные" Style="{StaticResource CribMainTextBlockTheme}"/>
+                        </Border>
+                        <Border Grid.Row="0" Grid.Column="2" BorderBrush="Black" BorderThickness="1" Margin="-1, -1, -1, 0">
+                            <TextBlock Text="Временные" Style="{StaticResource CribMainTextBlockTheme}"/>
+                        </Border>
+                        
+                        <!--Left column-->
+                        <Border Grid.Row="1" Grid.Column="0" BorderBrush="Black" BorderThickness="1" Margin="-1, -1, 0, 0">
+                            <TextBlock Text="Здоровый зуб" Style="{StaticResource CribLeftTextBlockTheme}"/>
+                        </Border>
+                        <Border Grid.Row="2" Grid.Column="0" BorderBrush="Black" BorderThickness="1" Margin="-1, -1, 0, 0">
+                            <TextBlock Text="Кариес, осложнение кариеса" Style="{StaticResource CribLeftTextBlockTheme}"/>
+                        </Border>
+                        <Border Grid.Row="3" Grid.Column="0" BorderBrush="Black" BorderThickness="1" Margin="-1, -1, 0, 0">
+                            <TextBlock Text="Пломба" Style="{StaticResource CribLeftTextBlockTheme}"/>
+                        </Border>
+                        <Border Grid.Row="4" Grid.Column="0" BorderBrush="Black" BorderThickness="1" Margin="-1, -1, 0, 0">
+                            <TextBlock Text="Удален" Style="{StaticResource CribLeftTextBlockTheme}"/>
+                        </Border>
+                        <Border Grid.Row="5" Grid.Column="0" BorderBrush="Black" BorderThickness="1" Margin="-1, -1, 0, 0">
+                            <TextBlock Text="Искуственная коронка" Style="{StaticResource CribLeftTextBlockTheme}"/>
+                        </Border>
+                        <Border Grid.Row="6" Grid.Column="0" BorderBrush="Black" BorderThickness="1" Margin="-1, -1, 0, 0">
+                            <TextBlock Text="Непрорезавшийся зуб" Style="{StaticResource CribLeftTextBlockTheme}"/>
+                        </Border>
+
+                        <!--First right column-->
+                        <Border Grid.Row="1" Grid.Column="1" BorderBrush="Black" BorderThickness="1" Margin="-1, -1, 0, 0">
+                            <TextBlock Text="0" Style="{StaticResource CribRightTextBlockTheme}"/>
+                        </Border>
+                        <Border Grid.Row="2" Grid.Column="1" BorderBrush="Black" BorderThickness="1" Margin="-1, -1, 0, 0">
+                            <TextBlock Text="1" Style="{StaticResource CribRightTextBlockTheme}"/>
+                        </Border>
+                        <Border Grid.Row="3" Grid.Column="1" BorderBrush="Black" BorderThickness="1" Margin="-1, -1, 0, 0">
+                            <TextBlock Text="3" Style="{StaticResource CribRightTextBlockTheme}"/>
+                        </Border>
+                        <Border Grid.Row="4" Grid.Column="1" BorderBrush="Black" BorderThickness="1" Margin="-1, -1, 0, 0">
+                            <TextBlock Text="4" Style="{StaticResource CribRightTextBlockTheme}"/>
+                        </Border>
+                        <Border Grid.Row="5" Grid.Column="1" BorderBrush="Black" BorderThickness="1" Margin="-1, -1, 0, 0">
+                            <TextBlock Text="7" Style="{StaticResource CribRightTextBlockTheme}"/>
+                        </Border>
+                        <Border Grid.Row="6" Grid.Column="1" BorderBrush="Black" BorderThickness="1" Margin="-1, -1, 0, 0">
+                            <TextBlock Text="8" Style="{StaticResource CribRightTextBlockTheme}"/>
+                        </Border>
+
+                        <!--Second right column-->
+                        <Border Grid.Row="1" Grid.Column="2" BorderBrush="Black" BorderThickness="1" Margin="-1, -1, -1, 0">
+                            <TextBlock Text="A" Style="{StaticResource CribRightTextBlockTheme}"/>
+                        </Border>
+                        <Border Grid.Row="2" Grid.Column="2" BorderBrush="Black" BorderThickness="1" Margin="-1, -1, -1, 0">
+                            <TextBlock Text="B" Style="{StaticResource CribRightTextBlockTheme}"/>
+                        </Border>
+                        <Border Grid.Row="3" Grid.Column="2" BorderBrush="Black" BorderThickness="1" Margin="-1, -1, -1, 0">
+                            <TextBlock Text="D" Style="{StaticResource CribRightTextBlockTheme}"/>
+                        </Border>
+                        <Border Grid.Row="4" Grid.Column="2" BorderBrush="Black" BorderThickness="1" Margin="-1, -1, -1, 0">
+                            <TextBlock Text="E" Style="{StaticResource CribRightTextBlockTheme}"/>
+                        </Border>
+                        <Border Grid.Row="5" Grid.Column="2" BorderBrush="Black" BorderThickness="1" Margin="-1, -1, -1, 0">
+                            <TextBlock Text="" Style="{StaticResource CribRightTextBlockTheme}"/>
+                        </Border>
+                        <Border Grid.Row="6" Grid.Column="2" BorderBrush="Black" BorderThickness="1" Margin="-1, -1, -1, 0">
+                            <TextBlock Text="" Style="{StaticResource CribRightTextBlockTheme}"/>
+                        </Border>
+
+                        <!--Footer-->
+                        <Border Grid.Row="7" Grid.Column="0" BorderBrush="Black" BorderThickness="1" Margin="-1, -1, 0, -1">
+                            <TextBlock Text="Мостовидные протезы" FontSize="16" Style="{StaticResource CribMainTextBlockTheme}"/>
+                        </Border>
+                        <Border Grid.Row="7" Grid.Column="1" Grid.ColumnSpan="2" BorderBrush="Black" BorderThickness="1" Margin="-1, -1, -1, -1">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="1*"/>
+                                    <ColumnDefinition Width="5*"/>
+                                    <ColumnDefinition Width="5*"/>
+                                    <ColumnDefinition Width="5*"/>
+                                    <ColumnDefinition Width="1*"/>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="2*"/>
+                                    <RowDefinition Height="2*"/>
+                                    <RowDefinition Height="1*"/>
+                                </Grid.RowDefinitions>
+
+                                <!--First row-->
+                                <Border Grid.Row="1" Grid.Column="1" BorderBrush="Black" BorderThickness="1" Margin="-1, -1, 0, 0">
+                                    <TextBlock Text="" Style="{StaticResource CribRightTextBlockTheme}"/>
+                                </Border>
+                                <Border Grid.Row="1" Grid.Column="2" BorderBrush="Black" BorderThickness="1" Margin="-1, -1, 0, 0">
+                                    <TextBlock Text="" Style="{StaticResource CribRightTextBlockTheme}"/>
+                                </Border>
+                                <Border Grid.Row="1" Grid.Column="3" BorderBrush="Black" BorderThickness="1" Margin="-1, -1, 0, 0">
+                                    <TextBlock Text="" Style="{StaticResource CribRightTextBlockTheme}"/>
+                                </Border>
+
+
+                                <!--Second row-->
+                                <Border Grid.Row="2" Grid.Column="1" BorderBrush="Black" BorderThickness="1" Margin="-1, -1, 0, 0">
+                                    <TextBlock Text="7" Style="{StaticResource CribRightTextBlockTheme}"/>
+                                </Border>
+                                <Border Grid.Row="2" Grid.Column="2" BorderBrush="Black" BorderThickness="1" Margin="-1, -1, 0, 0">
+                                    <TextBlock Text="4" Style="{StaticResource CribRightTextBlockTheme}"/>
+                                </Border>
+                                <Border Grid.Row="2" Grid.Column="3" BorderBrush="Black" BorderThickness="1" Margin="-1, -1, 0, 0">
+                                    <TextBlock Text="7" Style="{StaticResource CribRightTextBlockTheme}"/>
+                                </Border>
+
+                            </Grid>
+                        </Border>
+                    </Grid>
+                </Border>
+                <Border Grid.Row="1" BorderBrush="Black" BorderThickness="1" Margin="0,-1,0,0">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="10*"/>
+                            <ColumnDefinition Width="10*"/>
+                            <ColumnDefinition Width="1*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="1*"/>
+                            <RowDefinition Height="1*"/>
+                            <RowDefinition Height="1*"/>
+                            <RowDefinition Height="1*"/>
+                        </Grid.RowDefinitions>
+
+                        <TextBlock Grid.Column="1" Grid.Row="0" Text="Ж - жевательная"  FontSize="13." VerticalAlignment="Bottom" Style="{StaticResource PatientTextBlockTheme}"/>
+                        <TextBlock Grid.Column="1" Grid.Row="1" Text="В - вестибулярная" FontSize="13" VerticalAlignment="Bottom" Style="{StaticResource PatientTextBlockTheme}"/>
+                        <TextBlock Grid.Column="1" Grid.Row="2" Text="Н - нёбная" FontSize="13" VerticalAlignment="Bottom" Style="{StaticResource PatientTextBlockTheme}"/>
+                        <TextBlock Grid.Column="1" Grid.Row="3" Text="М- мезиальная" FontSize="13" VerticalAlignment="Bottom" Style="{StaticResource PatientTextBlockTheme}"/>
+
+                        <TextBlock Grid.Column="2" Grid.Row="0" Text="Д - дистальная" FontSize="13" VerticalAlignment="Bottom" Style="{StaticResource PatientTextBlockTheme}"/>
+                        <TextBlock Grid.Column="2" Grid.Row="1" Text="П - пришеечная" FontSize="13" VerticalAlignment="Bottom" Style="{StaticResource PatientTextBlockTheme}"/>
+                        <TextBlock Grid.Column="2" Grid.Row="2" Text="Я - язычная" FontSize="13" VerticalAlignment="Bottom" Style="{StaticResource PatientTextBlockTheme}"/>
+                    </Grid>
+                </Border>
+            </Grid>
         </Grid>
 
         <Grid Grid.Row="2" Grid.Column="2" IsHitTestVisible="False" x:Name="Grid2">
@@ -140,9 +308,9 @@
 
         <Grid Grid.Row="2" Grid.Column="3" IsHitTestVisible="False" x:Name="Grid3">
             <TextBox FontSize="18" TextWrapping="Wrap"  AcceptsReturn="True" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" BorderThickness="1" Padding="0" Margin="10,0,1,1" BorderBrush="Black" Background="Transparent" Foreground="Black" FontFamily="Roboto" x:Name="CommentBox"/>
-            
+
         </Grid>
-        
+
         <Grid Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="3">
             <DataGrid 
              x:Name="DiaryDataGrid" 
@@ -160,7 +328,7 @@
              SelectionUnit="FullRow"
              ScrollViewer.CanContentScroll="False"
              MouseDoubleClick="DiaryDataGrid_MouseDoubleClick"
-             SelectionChanged="DiaryDataGrid_SelectionChanged"> 
+             SelectionChanged="DiaryDataGrid_SelectionChanged">
                 <DataGrid.Columns >
                     <DataGridTextColumn  Width="1" Header="№"  x:Name="idDGT" Binding="{Binding idD}" FontFamily="Roboto" FontSize="16" CanUserResize="False"/>
                     <DataGridTextColumn  Width="170"  Header="Дата"  x:Name="dateDGT" Binding="{Binding dateD}" FontFamily="Roboto" FontSize="16" CanUserResize="False"/>
@@ -179,11 +347,11 @@
                     </ContextMenu>
                 </DataGrid.ContextMenu>
             </DataGrid>
-            
+
         </Grid>
 
         <Grid Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="5" Background="#FFFAFAFA">
-            
+
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="10"/>
                 <ColumnDefinition Width="165"/>
@@ -203,17 +371,17 @@
                 <TextBlock Text="Дата посещения" Style="{StaticResource PatientTextBlockTheme}"/>
                 <DatePicker SelectedDateFormat="Long" FontSize="18" VerticalAlignment="Bottom" HorizontalAlignment="Stretch" Margin="2,4,10,15" BorderBrush="Black" Background="Transparent" Foreground="Black" FontFamily="Roboto" x:Name="VisitDateDate"/>
             </Grid>
-            
+
             <Grid Grid.Column="2">
                 <TextBlock Text="Время" Style="{StaticResource PatientTextBlockTheme}"/>
                 <TextBox Text="00:00" Style="{StaticResource PatientTextBoxTheme}" Margin="2,4,10,15" x:Name="VisitTimeBox"/>
             </Grid>
-            
+
             <Grid Grid.Column="3">
                 <TextBlock Text="Диагноз" Style="{StaticResource PatientTextBlockTheme}"/>
                 <TextBox Text="" Style="{StaticResource PatientTextBoxTheme}" Margin="2,4,10,15" x:Name="DiagnosisBox"/>
             </Grid>
-            
+
             <Grid Grid.Column="4">
                 <TextBlock Text="Лечение" Style="{StaticResource PatientTextBlockTheme}"/>
                 <TextBox Text="" Style="{StaticResource PatientTextBoxTheme}" Margin="2,4,10,15" x:Name="TherapyBox"/>
@@ -223,7 +391,7 @@
                 <TextBlock Text="Рекомендации" Style="{StaticResource PatientTextBlockTheme}"/>
                 <TextBox Text="" Style="{StaticResource PatientTextBoxTheme}" Margin="2,4,10,15" x:Name="RecommendationBox"/>
             </Grid>
-            
+
             <Grid Grid.Column="6">
                 <TextBlock Text="Жалоба" Style="{StaticResource PatientTextBlockTheme}"/>
                 <TextBox Text="" Style="{StaticResource PatientTextBoxTheme}" Margin="2,4,10,15" x:Name="ComplaintBox"/>

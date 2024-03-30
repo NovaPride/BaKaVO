@@ -20,6 +20,9 @@
                 <ResourceDictionary Source="../Theme/PatientTextBoxTheme.xaml"/>
                 <ResourceDictionary Source="../Theme/SaveButtonTheme.xaml"/>
                 <ResourceDictionary Source="../Theme/DiarySaveButtonTheme.xaml"/>
+                <ResourceDictionary Source="../Theme/CribMainTextBlockTheme.xaml"/>
+                <ResourceDictionary Source="../Theme/CribLeftTextBlockTheme.xaml"/>
+                <ResourceDictionary Source="../Theme/CribRightTextBlockTheme.xaml"/>
             </ResourceDictionary.MergedDictionaries>
 
             <DataTemplate DataType="{x:Type viewModel:AnamnesisViewModel}">

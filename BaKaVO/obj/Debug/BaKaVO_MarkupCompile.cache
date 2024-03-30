@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Users\novap\source\repos\BaKaVO\BaKaVO\ProjFiles\App.xaml
-131146355116
+16834048316
 
 27-267776040
 311439477289
-MVVM\View\AnamnesisView.xaml;MVVM\View\PatientListView.xaml;MVVM\View\PatientView.xaml;MVVM\View\SettingsView.xaml;Theme\DiarySaveButtonTheme.xaml;Theme\LeftMenuButtonTheme.xaml;Theme\LabelWithBorderTheme.xaml;Theme\MaskedBoxTheme.xaml;Theme\PatientTextBlockTheme.xaml;Theme\PatientTextBoxTheme.xaml;Theme\RadioButtonWithBorderTheme.xaml;Theme\SaveButtonTheme.xaml;Windows\Base.xaml;
+MVVM\View\AnamnesisView.xaml;MVVM\View\PatientListView.xaml;MVVM\View\PatientView.xaml;MVVM\View\SettingsView.xaml;Theme\CribMainTextBlockTheme.xaml;Theme\CribLeftTextBlockTheme.xaml;Theme\CribRightTextBlockTheme.xaml;Theme\DiarySaveButtonTheme.xaml;Theme\LeftMenuButtonTheme.xaml;Theme\LabelWithBorderTheme.xaml;Theme\MaskedBoxTheme.xaml;Theme\PatientTextBlockTheme.xaml;Theme\PatientTextBoxTheme.xaml;Theme\RadioButtonWithBorderTheme.xaml;Theme\SaveButtonTheme.xaml;Windows\Base.xaml;
 
 False
 

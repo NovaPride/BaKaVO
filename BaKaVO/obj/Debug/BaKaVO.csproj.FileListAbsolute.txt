@@ -69,3 +69,6 @@ C:\Users\novap\source\repos\BaKaVO\BaKaVO\bin\Debug\ru\Xceed.Wpf.AvalonDock.reso
 C:\Users\novap\source\repos\BaKaVO\BaKaVO\bin\Debug\sv\Xceed.Wpf.AvalonDock.resources.dll
 C:\Users\novap\source\repos\BaKaVO\BaKaVO\bin\Debug\zh-Hans\Xceed.Wpf.AvalonDock.resources.dll
 C:\Users\novap\source\repos\BaKaVO\BaKaVO\obj\Debug\Theme\MaskedBoxTheme.baml
+C:\Users\novap\source\repos\BaKaVO\BaKaVO\obj\Debug\Theme\CribLeftTextBlockTheme.baml
+C:\Users\novap\source\repos\BaKaVO\BaKaVO\obj\Debug\Theme\CribRightTextBlockTheme.baml
+C:\Users\novap\source\repos\BaKaVO\BaKaVO\obj\Debug\Theme\CribMainTextBlockTheme.baml
