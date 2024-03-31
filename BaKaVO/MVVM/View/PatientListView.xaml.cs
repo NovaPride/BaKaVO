@@ -153,7 +153,7 @@ namespace BaKaVO.MVVM.View
 
                     //insert patient
                     string newPat = $"INSERT INTO Patient (Fullname_Patient, Domicile_Patient, PhoneNumber_Patient, Bite_Patient, Comment_Patient) VALUES " +
-                        $"(N'', N'', N'', 1, N''); ";
+                        $"(N'', N'', N'375 (29) ___-__-__', 1, N''); ";
                     com = new SqlCommand(newPat, conn);
                     com.ExecuteNonQuery();
                     glob.patientdb.SaveChanges();
