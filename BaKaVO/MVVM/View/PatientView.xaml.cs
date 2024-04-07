@@ -285,8 +285,6 @@ namespace BaKaVO.MVVM.View
             try { 
                 if (glob.issaveclicked)
                 {
-               
-                    DataRowView h = DiaryDataGrid.SelectedItems[0] as DataRowView;
                     PreLastRow.Height = new GridLength(0);
                     LastRow.Height = new GridLength(75);
 
@@ -306,7 +304,7 @@ namespace BaKaVO.MVVM.View
             }
             catch { }
         }
-        private void MenuItem_Click(object sender, RoutedEventArgs e)
+        private void MenuItemNew_Click(object sender, RoutedEventArgs e)
         {
             try
             {
@@ -316,10 +314,28 @@ namespace BaKaVO.MVVM.View
                     {
                         conn.Open();
                         //insert new diary
-                        string newPat = $"INSERT INTO Diary (Complaint_Diary, Diagnosis_Diary, Treatment_Diary, Recomendation_Diary, Price_Diary, ID_Dentist_Dia, ID_Patient_Dia) VALUES " +
-                            $"(N'', N'', N'', N'', N'', 1, {glob.pat_id});";
-                        SqlCommand com = new SqlCommand(newPat, conn);
-                        com.ExecuteNonQuery();
+                        new SqlCommand($"INSERT INTO Diary (Complaint_Diary, Diagnosis_Diary, Treatment_Diary, Recomendation_Diary, Price_Diary, ID_Dentist_Dia, ID_Patient_Dia) VALUES " +
+                            $"(N'', N'', N'', N'', N'', 1, {glob.pat_id});", conn).ExecuteNonQuery();
+                        glob.diarydb.SaveChanges();
+                        conn.Close();
+                        Save();
+                    }
+                }
+            }
+            catch { }
+        }
+        private void MenuItemRemove_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                if (glob.issaveclicked)
+                {
+                    using (SqlConnection conn = new SqlConnection(glob.connectionstring))
+                    {
+                        DataRowView h = DiaryDataGrid.SelectedItems[0] as DataRowView;
+                        conn.Open();
+                        //delete row in diary 
+                        new SqlCommand($"DELETE FROM Diary WHERE ID_Diary = {h.Row[0]}", conn).ExecuteNonQuery();
                         glob.diarydb.SaveChanges();
                         conn.Close();
                         Save();
@@ -349,7 +365,7 @@ namespace BaKaVO.MVVM.View
                             DiagnosisBox.Text = reader.GetString(3);
                             TherapyBox.Text = reader.GetString(4);
                             RecommendationBox.Text = reader.GetString(5);
-                            PriceBox.Text = reader.GetString(5);
+                            PriceBox.Text = reader.GetString(6);
                             DentistCBox.SelectedIndex = reader.GetInt32(7) - 1;
                         }
                     }
@@ -395,21 +411,12 @@ namespace BaKaVO.MVVM.View
         }
         private void PatientView_SizeChanged(object sender, SizeChangedEventArgs e)
         {
-            //Console.WriteLine(this.ActualWidth.ToString());
             if (this.ActualWidth <= 1425) { 
-                //this.FontSize = 15;
                 FirstColumn.Width = new GridLength(0); 
             }
             if (this.ActualWidth > 1425) { 
-                //this.FontSize = 16; 
                 FirstColumn.Width = new GridLength(290); 
             }
-            //if (this.ActualWidth > 1850) { 
-            //    this.FontSize = 17;
-            //}
-            //if (this.ActualWidth > 2400) { 
-            //    this.FontSize = 18; 
-            //}
         }
         private string MonthToDay(string date)
         {

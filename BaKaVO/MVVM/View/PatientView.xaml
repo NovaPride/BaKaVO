@@ -330,19 +330,27 @@
              MouseDoubleClick="DiaryDataGrid_MouseDoubleClick"
              SelectionChanged="DiaryDataGrid_SelectionChanged">
                 <DataGrid.Columns >
-                    <DataGridTextColumn  Width="1" Header="№"  x:Name="idDGT" Binding="{Binding idD}" FontFamily="Roboto" FontSize="16" CanUserResize="False"/>
-                    <DataGridTextColumn  Width="170"  Header="Дата"  x:Name="dateDGT" Binding="{Binding dateD}" FontFamily="Roboto" FontSize="16" CanUserResize="False"/>
-                    <DataGridTextColumn  Width="14*"  Header="Диагноз" x:Name="dignosisDGT" Binding="{Binding dignosisD}" FontFamily="Roboto" FontSize="16"/>
-                    <DataGridTextColumn  Width="10*"  Header="Лечение"  x:Name="therapyDGT" Binding="{Binding therapyD}" FontFamily="Roboto" FontSize="16"/>
-                    <DataGridTextColumn  Width="12*"  Header="Рекомендации" x:Name="recommendationsDGT" Binding="{Binding recommendationsD}" FontFamily="Roboto" FontSize="16"/>
-                    <DataGridTextColumn  Width="7*"  Header="Жалоба" x:Name="appealDGT" Binding="{Binding appealD}" FontFamily="Roboto" FontSize="16"/>
-                    <DataGridTextColumn  Width="7*"  Header="Цена" x:Name="priceDGT" Binding="{Binding priceD}" FontFamily="Roboto" FontSize="16"/>
-                    <DataGridTextColumn  Width="7*"  Header="Врач" x:Name="doctorDGT" Binding="{Binding doctorD}" FontFamily="Roboto" FontSize="16"/>
+                    <DataGridTextColumn  Width="1" Header="№"  x:Name="idDGT" Binding="{Binding idD}" FontFamily="Roboto" FontSize="20" CanUserResize="False"/>
+                    <DataGridTextColumn  Width="230"  Header="Дата"  x:Name="dateDGT" Binding="{Binding dateD}" FontFamily="Roboto" FontSize="20" CanUserResize="False"/>
+                    <DataGridTextColumn  Width="14*"  Header="Диагноз" x:Name="dignosisDGT" Binding="{Binding dignosisD}" FontFamily="Roboto" FontSize="20"/>
+                    <DataGridTextColumn  Width="10*"  Header="Лечение"  x:Name="therapyDGT" Binding="{Binding therapyD}" FontFamily="Roboto" FontSize="20"/>
+                    <DataGridTextColumn  Width="12*"  Header="Рекомендации" x:Name="recommendationsDGT" Binding="{Binding recommendationsD}" FontFamily="Roboto" FontSize="20"/>
+                    <DataGridTextColumn  Width="7*"  Header="Жалоба" x:Name="appealDGT" Binding="{Binding appealD}" FontFamily="Roboto" FontSize="20"/>
+                    <DataGridTextColumn  Width="7*"  Header="Цена" x:Name="priceDGT" Binding="{Binding priceD}" FontFamily="Roboto" FontSize="20"/>
+                    <DataGridTextColumn  Width="7*"  Header="Врач" x:Name="doctorDGT" Binding="{Binding doctorD}" FontFamily="Roboto" FontSize="20"/>
+                    <!--было 16 если что!!!!-->
                 </DataGrid.Columns>
                 <DataGrid.ContextMenu>
                     <ContextMenu x:Name="DiaryDataGrid_ContextMenu">
-                        <MenuItem Header="Новый приём"
-                          Click="MenuItem_Click"
+                        <MenuItem Header="Новый"
+                          Click="MenuItemNew_Click"
+                          CommandParameter="{Binding RelativeSource={RelativeSource Self}, Path=Parent}"/>
+                        <MenuItem Header="Удалить"
+                          Click="MenuItemRemove_Click"
+                          CommandParameter="{Binding RelativeSource={RelativeSource Self}, Path=Parent}"/>
+                        <MenuItem Header="__________________" IsHitTestVisible="False"
+                          CommandParameter="{Binding RelativeSource={RelativeSource Self}, Path=Parent}"/>
+                        <MenuItem Header="Закрыть"
                           CommandParameter="{Binding RelativeSource={RelativeSource Self}, Path=Parent}"/>
                     </ContextMenu>
                 </DataGrid.ContextMenu>

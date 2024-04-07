@@ -9,10 +9,12 @@
             <Setter Property="TextWrapping" Value="NoWrap"/>
             <Setter Property="Margin" Value="2,4,10,10"/>
             <Setter Property="FontFamily" Value="Roboto"/>
-            <Setter Property="FontSize" Value="18"/>
+            <Setter Property="FontSize" Value="22"/>
             <Setter Property="BorderBrush" Value="Black"/>
             <Setter Property="Background" Value="Transparent"/>
             <Setter Property="Foreground" Value="Black"/>
         </Style.Setters>
     </Style>
 </ResourceDictionary>
+
+<!--<Setter Property="FontSize" Value="18"/>-->
