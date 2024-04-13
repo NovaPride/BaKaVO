@@ -26,6 +26,7 @@ namespace BaKaVO.MVVM.View
         int curr_patlistpage;
         int patientperpage;
         int patientcount;
+        string search_sel;
         public PatientListView()
         {
             curr_patlistpage = 1;
@@ -33,9 +34,13 @@ namespace BaKaVO.MVVM.View
             InitializeComponent();
             glob.myPatientListView = this;
             this.FontSize = 15;
+            search_sel = "";
             //OneTimeUpdate();
             Update();
         }
+
+      
+
         public void SaveButtonWasClicked() 
         {
             if (glob.issaveclicked)
@@ -64,6 +69,16 @@ namespace BaKaVO.MVVM.View
         //        conn.Close();
         //    }
         //}
+        private void Search_Click(object sender, RoutedEventArgs e)
+        {
+            search_sel = SearchBox.Text;
+            Update();
+        }
+        private void SearchBox_KeyUp(object sender, KeyEventArgs e)
+        {
+            search_sel = SearchBox.Text;
+            Update();
+        }
 
         private void Update()
         {
@@ -71,7 +86,8 @@ namespace BaKaVO.MVVM.View
             {
                 using (SqlConnection conn = new SqlConnection(glob.connectionstring))
                 {
-                    string reg = "SELECT ID_Patient as IDP, Fullname_Patient as NameP, PhoneNumber_Patient as PhoneP, SUBSTRING(Comment_Patient, 1, 200) as CommentP FROM Patient " +
+                    string reg = "SELECT ID_Patient as IDP, Fullname_Patient as NameP, PhoneNumber_Patient as PhoneP, CONVERT(varchar(10), BirthDate_Patient, 104) as BirthP, SUBSTRING(Comment_Patient, 1, 200) as CommentP FROM Patient " +
+                        $"WHERE Fullname_Patient LIKE N'%{search_sel}%'" +
                         $"ORDER BY ID_Patient " +
                         $"OFFSET {(curr_patlistpage - 1) * patientperpage} ROWS " +
                         $"FETCH NEXT {patientperpage} ROWS ONLY";
@@ -196,5 +212,7 @@ namespace BaKaVO.MVVM.View
             catch { }
             
         }
+
+        
     }
 }

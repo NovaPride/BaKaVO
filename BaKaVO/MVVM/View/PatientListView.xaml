@@ -28,11 +28,11 @@
                 <ColumnDefinition Width="8*"/>
                 <ColumnDefinition Width="350"/>
             </Grid.ColumnDefinitions>
-            
-            <TextBox Grid.Column="0" Text=""  Style="{StaticResource PatientTextBoxTheme}" Margin="2,4,10,5" x:Name="SearchBox"/>
+
+            <TextBox Grid.Column="0" Text=""  Style="{StaticResource PatientTextBoxTheme}" Margin="2,4,10,5" x:Name="SearchBox" KeyUp="SearchBox_KeyUp"/>
 
             <Grid Grid.Column="1" Background="#FF454056" Margin="3,5,3,5">
-                <Button Content="➤" Style="{StaticResource DiarySaveButtonTheme}" x:Name="Search_button"/>
+                <Button Content="➤" Style="{StaticResource DiarySaveButtonTheme}" x:Name="Search_button" Click="Search_Click"/>
             </Grid>
 
             <Grid Grid.Column="3" Background="#FF454056" Margin="3,5,3,5">
@@ -105,6 +105,7 @@
                     <DataGridTextColumn  Width="1" Header="№"  x:Name="IDPat" Binding="{Binding IDP}" FontFamily="Roboto" CanUserResize="False"/>
                     <DataGridTextColumn  Width="350"  Header="Имя"  x:Name="NamePat" Binding="{Binding NameP}" FontFamily="Roboto" FontSize="20"/>
                     <DataGridTextColumn  Width="250"  Header="Телефон" x:Name="PhonePat" Binding="{Binding PhoneP}" FontFamily="Roboto" FontSize="20"/>
+                    <DataGridTextColumn  Width="250"  Header="Дата рождения" x:Name="BirthPat" Binding="{Binding BirthP}" FontFamily="Roboto" FontSize="20"/>
                     <DataGridTextColumn  Width="1*"  Header="Комментарий" x:Name="CommentPat" Binding="{Binding CommentP}" FontFamily="Roboto" FontSize="20"/>
                 </DataGrid.Columns>
             </DataGrid>
