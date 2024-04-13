@@ -21,7 +21,7 @@
 
         <Grid.RowDefinitions>
             <RowDefinition Height="5"/>
-            <RowDefinition Height="65"/>
+            <RowDefinition Height="75"/>
             <RowDefinition Height="332"/>
             <RowDefinition Height="33*"/>
             <RowDefinition Height="0" x:Name="PreLastRow"/>
@@ -32,7 +32,7 @@
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="10*"/>
                 <ColumnDefinition Width="10*"/>
-                <ColumnDefinition Width="165"/>
+                <ColumnDefinition Width="200"/>
                 <ColumnDefinition Width="190"/>
                 <ColumnDefinition Width="165"/>
             </Grid.ColumnDefinitions>
@@ -54,7 +54,7 @@
 
             <Grid Grid.Column="3">
                 <TextBlock Text="Прикус" Style="{StaticResource PatientTextBlockTheme}"/>
-                <ComboBox FontSize="18" VerticalAlignment="Bottom" HorizontalAlignment="Stretch" Margin="2,4,10,10" BorderBrush="Black" Background="Transparent" Foreground="Black" FontFamily="Roboto" x:Name="BiteCBox">
+                <ComboBox FontSize="22" VerticalAlignment="Bottom" HorizontalAlignment="Stretch" Margin="2,4,10,10" BorderBrush="Black" Background="Transparent" Foreground="Black" FontFamily="Roboto" x:Name="BiteCBox">
                     <TextBlock>Прямой</TextBlock>
                     <TextBlock>Глубокий</TextBlock>
                     <TextBlock>Открытый</TextBlock>
@@ -67,7 +67,7 @@
 
             <Grid Grid.Column="4">
                 <TextBlock Text="День рождения" Style="{StaticResource PatientTextBlockTheme}"/>
-                <DatePicker SelectedDateFormat="Long" FontSize="18" VerticalAlignment="Bottom" HorizontalAlignment="Stretch" Margin="2,4,10,10" BorderBrush="Black" Background="Transparent" Foreground="Black" FontFamily="Roboto" x:Name="BirthDate"/>
+                <DatePicker SelectedDateFormat="Long" FontSize="22" VerticalAlignment="Bottom" HorizontalAlignment="Stretch" Margin="2,4,10,10" BorderBrush="Black" Background="Transparent" Foreground="Black" FontFamily="Roboto" x:Name="BirthDate"/>
             </Grid>
 
 
@@ -369,7 +369,7 @@
                 <ColumnDefinition Width="12*"/>
                 <ColumnDefinition Width="7*"/>
                 <ColumnDefinition Width="7*"/>
-                <ColumnDefinition Width="150"/>
+                <ColumnDefinition Width="180"/>
                 <ColumnDefinition Width="105"/>
             </Grid.ColumnDefinitions>
 
@@ -377,7 +377,7 @@
 
             <Grid Grid.Column="1">
                 <TextBlock Text="Дата посещения" Style="{StaticResource PatientTextBlockTheme}"/>
-                <DatePicker SelectedDateFormat="Long" FontSize="18" VerticalAlignment="Bottom" HorizontalAlignment="Stretch" Margin="2,4,10,15" BorderBrush="Black" Background="Transparent" Foreground="Black" FontFamily="Roboto" x:Name="VisitDateDate"/>
+                <DatePicker SelectedDateFormat="Long" FontSize="22" VerticalAlignment="Bottom" HorizontalAlignment="Stretch" Margin="2,4,10,15" BorderBrush="Black" Background="Transparent" Foreground="Black" FontFamily="Roboto" x:Name="VisitDateDate"/>
             </Grid>
 
             <Grid Grid.Column="2">
@@ -412,7 +412,7 @@
 
             <Grid Grid.Column="8">
                 <TextBlock Text="Врач" Style="{StaticResource PatientTextBlockTheme}"/>
-                <ComboBox FontSize="18" VerticalAlignment="Bottom" HorizontalAlignment="Stretch" Margin="2,4,10,15" BorderBrush="Black" Background="Transparent" Foreground="Black" FontFamily="Roboto" x:Name="DentistCBox"/>
+                <ComboBox FontSize="22" VerticalAlignment="Bottom" HorizontalAlignment="Stretch" Margin="2,4,10,15" BorderBrush="Black" Background="Transparent" Foreground="Black" FontFamily="Roboto" x:Name="DentistCBox"/>
             </Grid>
 
             <Grid Grid.Column="9" Background="#FF454056">
