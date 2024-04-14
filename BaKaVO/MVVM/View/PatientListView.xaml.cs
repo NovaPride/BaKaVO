@@ -82,11 +82,14 @@ namespace BaKaVO.MVVM.View
 
         private void Update()
         {
-            try
-            {
+            
                 using (SqlConnection conn = new SqlConnection(glob.connectionstring))
                 {
-                    string reg = "SELECT ID_Patient as IDP, Fullname_Patient as NameP, PhoneNumber_Patient as PhoneP, CONVERT(varchar(10), BirthDate_Patient, 104) as BirthP, SUBSTRING(Comment_Patient, 1, 200) as CommentP FROM Patient " +
+                    string reg = $"SELECT ID_Patient as IDP, Fullname_Patient as NameP, " +
+                        $"PhoneNumber_Patient as PhoneP, CONVERT(varchar(10), BirthDate_Patient, 104) as BirthP, " +
+                        $"SUBSTRING(Comment_Patient, 1, 200) as CommentP, " +
+                        $"(SELECT CONVERT(varchar(10), max(Date_Diary), 104) FROM Diary WHERE ID_Patient_Dia = ID_Patient) as LastVisitP " +
+                        $"FROM Patient " +
                         $"WHERE Fullname_Patient LIKE N'%{search_sel}%'" +
                         $"ORDER BY ID_Patient " +
                         $"OFFSET {(curr_patlistpage - 1) * patientperpage} ROWS " +
@@ -110,8 +113,7 @@ namespace BaKaVO.MVVM.View
                     PageSelectBlock.Text = $"{1 + ((curr_patlistpage - 1) * patientperpage)}-{temp} из {patientcount}";
                     conn.Close();
                 }
-            }
-            catch { MessageBox.Show("Введите корректную информацию ! 1"); return; }
+           
         }
 
         private void PatientListDataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)//функция обновления полей для заполнения при выделения строки в таблице

@@ -251,9 +251,6 @@
     <None Include="ProjFiles\App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Pics\Crib.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Folder Include="MVVM\Model\" />
   </ItemGroup>
   <ItemGroup>
