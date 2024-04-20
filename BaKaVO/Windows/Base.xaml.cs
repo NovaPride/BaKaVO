@@ -36,8 +36,8 @@ namespace BaKaVO.Windows
             //myBinding.Source = MainViewModel;
             
             //BaseContentControl.SetBinding(BaseContentControl.DataContext, myBinding);
-           // BaseContentControl.Content = "{Binding CurrentView}";
-            this.WindowStyle = WindowStyle.ThreeDBorderWindow;
+            //BaseContentControl.Content = "{Binding CurrentView}";
+            this.WindowStyle = WindowStyle.SingleBorderWindow;
             this.MaxHeight = SystemParameters.MaximizedPrimaryScreenHeight;
             CultureInfo ci = CultureInfo.CreateSpecificCulture(CultureInfo.CurrentCulture.Name);
             ci.DateTimeFormat.LongDatePattern = "dd.MM.yyyy"; //This can be used for one type of DatePicker
@@ -115,8 +115,10 @@ namespace BaKaVO.Windows
         {
             if (this.WindowState != WindowState.Normal)
             {
+                this.WindowStyle = WindowStyle.SingleBorderWindow;
                 this.ResizeMode = ResizeMode.CanResize;
                 this.WindowState = WindowState.Normal;
+                
                 //this.Topmost = false;
             }
             else
@@ -124,6 +126,7 @@ namespace BaKaVO.Windows
                 //this.Visibility = Visibility.Collapsed;
                 this.ResizeMode = ResizeMode.NoResize;
                 this.WindowState = WindowState.Maximized;
+                this.WindowStyle = WindowStyle.None;
                 //this.Topmost = true;
                 //this.Visibility = Visibility.Visible;
             }
