@@ -79,40 +79,56 @@ namespace BaKaVO.MVVM.View
             search_sel = SearchBox.Text;
             Update();
         }
+        private string whatToSearch(string str) {
+            if (str != "")
+            {
+                if (Char.IsNumber(search_sel[0]) || search_sel[0] == '.')
+                {
+                    return "(SELECT CONVERT(varchar(10), max(Date_Diary), 104) FROM Diary WHERE ID_Patient_Dia = ID_Patient)";
+                }
+                else
+                {
+                    return "Fullname_Patient";
+                }
+            }
+            return "Fullname_Patient";
+        }
+
 
         private void Update()
         {
             
-                using (SqlConnection conn = new SqlConnection(glob.connectionstring))
-                {
-                    string reg = $"SELECT ID_Patient as IDP, Fullname_Patient as NameP, " +
-                        $"PhoneNumber_Patient as PhoneP, CONVERT(varchar(10), BirthDate_Patient, 104) as BirthP, " +
-                        $"SUBSTRING(Comment_Patient, 1, 200) as CommentP, " +
-                        $"(SELECT CONVERT(varchar(10), max(Date_Diary), 104) FROM Diary WHERE ID_Patient_Dia = ID_Patient) as LastVisitP " +
-                        $"FROM Patient " +
-                        $"WHERE Fullname_Patient LIKE N'%{search_sel}%'" +
-                        $"ORDER BY ID_Patient " +
-                        $"OFFSET {(curr_patlistpage - 1) * patientperpage} ROWS " +
-                        $"FETCH NEXT {patientperpage} ROWS ONLY";
-                    glob.adapt = new SqlDataAdapter(reg, conn);
-                    conn.Open();
-                    glob.dt = new System.Data.DataTable();
-                    glob.adapt.Fill(glob.dt);
-                    PatientListDataGrid.ItemsSource = glob.dt.DefaultView;
+            using (SqlConnection conn = new SqlConnection(glob.connectionstring))
+            {
+                
+                string reg = $"SELECT ID_Patient as IDP, Fullname_Patient as NameP, " +
+                    $"PhoneNumber_Patient as PhoneP, CONVERT(varchar(10), BirthDate_Patient, 104) as BirthP, " +
+                    $"SUBSTRING(Comment_Patient, 1, 200) as CommentP, " +
+                    $"(SELECT CONVERT(varchar(10), max(Date_Diary), 104) FROM Diary WHERE ID_Patient_Dia = ID_Patient) as LastVisitP " +
+                    $"FROM Patient " +
+                    $"WHERE {whatToSearch(search_sel)} LIKE N'%{search_sel}%'" +
+                    $"ORDER BY ID_Patient " +
+                    $"OFFSET {(curr_patlistpage - 1) * patientperpage} ROWS " +
+                    $"FETCH NEXT {patientperpage} ROWS ONLY";
+                glob.adapt = new SqlDataAdapter(reg, conn);
+                conn.Open();
+                glob.dt = new System.Data.DataTable();
+                glob.adapt.Fill(glob.dt);
+                PatientListDataGrid.ItemsSource = glob.dt.DefaultView;
 
-                    string sql = "SELECT COUNT(DISTINCT ID_Patient) FROM Patient";
-                    SqlCommand com = new SqlCommand(sql, conn);
-                    using (SqlDataReader reader = com.ExecuteReader())
+                string sql = "SELECT COUNT(DISTINCT ID_Patient) FROM Patient";
+                SqlCommand com = new SqlCommand(sql, conn);
+                using (SqlDataReader reader = com.ExecuteReader())
+                {
+                    while (reader.Read())
                     {
-                        while (reader.Read())
-                        {
-                            patientcount = reader.GetInt32(0);
-                        }
+                        patientcount = reader.GetInt32(0);
                     }
-                    int temp = patientcount > curr_patlistpage * patientperpage ? curr_patlistpage * patientperpage : patientcount;
-                    PageSelectBlock.Text = $"{1 + ((curr_patlistpage - 1) * patientperpage)}-{temp} из {patientcount}";
-                    conn.Close();
                 }
+                int temp = patientcount > curr_patlistpage * patientperpage ? curr_patlistpage * patientperpage : patientcount;
+                PageSelectBlock.Text = $"{1 + ((curr_patlistpage - 1) * patientperpage)}-{temp} из {patientcount}";
+                conn.Close();
+            }
            
         }
 
