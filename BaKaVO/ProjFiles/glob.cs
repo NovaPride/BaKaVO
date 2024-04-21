@@ -26,6 +26,8 @@ namespace BaKaVO.Windows
         public static int pat_id;
         public static int curvi_id;
         public static bool issaveclicked;
+        public static int curr_patlistpage;
+
         //public static int curr_patlistpage;
 
         //public static int patientperpage;

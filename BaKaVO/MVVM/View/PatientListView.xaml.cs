@@ -23,13 +23,12 @@ namespace BaKaVO.MVVM.View
 {
     public partial class PatientListView : UserControl
     {
-        int curr_patlistpage;
         int patientperpage;
         int patientcount;
         string search_sel;
         public PatientListView()
         {
-            curr_patlistpage = 1;
+            
             patientperpage = 25;
             InitializeComponent();
             glob.myPatientListView = this;
@@ -76,6 +75,7 @@ namespace BaKaVO.MVVM.View
         }
         private void SearchBox_KeyUp(object sender, KeyEventArgs e)
         {
+            glob.curr_patlistpage = 1;
             search_sel = SearchBox.Text;
             Update();
         }
@@ -108,7 +108,7 @@ namespace BaKaVO.MVVM.View
                     $"FROM Patient " +
                     $"WHERE {whatToSearch(search_sel)} LIKE N'%{search_sel}%'" +
                     $"ORDER BY ID_Patient " +
-                    $"OFFSET {(curr_patlistpage - 1) * patientperpage} ROWS " +
+                    $"OFFSET {(glob.curr_patlistpage - 1) * patientperpage} ROWS " +
                     $"FETCH NEXT {patientperpage} ROWS ONLY";
                 glob.adapt = new SqlDataAdapter(reg, conn);
                 conn.Open();
@@ -125,8 +125,8 @@ namespace BaKaVO.MVVM.View
                         patientcount = reader.GetInt32(0);
                     }
                 }
-                int temp = patientcount > curr_patlistpage * patientperpage ? curr_patlistpage * patientperpage : patientcount;
-                PageSelectBlock.Text = $"{1 + ((curr_patlistpage - 1) * patientperpage)}-{temp} из {patientcount}";
+                int temp = patientcount > glob.curr_patlistpage * patientperpage ? glob.curr_patlistpage * patientperpage : patientcount;
+                PageSelectBlock.Text = $"{1 + ((glob.curr_patlistpage - 1) * patientperpage)}-{temp} из {patientcount}";
                 conn.Close();
             }
            
@@ -154,24 +154,24 @@ namespace BaKaVO.MVVM.View
         }
         private void FirstPage_Click(object sender, RoutedEventArgs e)
         {
-            curr_patlistpage = 1;
+            glob.curr_patlistpage = 1;
             Update();
         }
         private void PreviousPage_Click(object sender, RoutedEventArgs e)
         {
-            if (curr_patlistpage > 1) { curr_patlistpage--; }
+            if (glob.curr_patlistpage > 1) { glob.curr_patlistpage--; }
             Update();
         }
         private void NextPage_Click(object sender, RoutedEventArgs e)
         {
-            if (patientcount > curr_patlistpage * patientperpage) { curr_patlistpage++; }
+            if (patientcount > glob.curr_patlistpage * patientperpage) { glob.curr_patlistpage++; }
             Update();
         }
         private void LastPage_Click(object sender, RoutedEventArgs e)
         {
             int temp = (patientcount / patientperpage);
             if (patientcount > temp * patientperpage) { temp++; }
-            curr_patlistpage = temp ;
+            glob.curr_patlistpage = temp ;
             Update();
         }
         private void AddNewPatient_Click(object sender, RoutedEventArgs e)
@@ -224,6 +224,11 @@ namespace BaKaVO.MVVM.View
 
                     conn.Close();
 
+                    if (search_sel == "") {
+                        int temp = (patientcount / patientperpage);
+                        if (patientcount > temp * patientperpage) { temp++; }
+                        glob.curr_patlistpage = temp;
+                    }
                     Update();
                 }
             }

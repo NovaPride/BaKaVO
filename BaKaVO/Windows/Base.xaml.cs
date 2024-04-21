@@ -30,6 +30,7 @@ namespace BaKaVO.Windows
             InitializeComponent();
             glob.pat_id = 1;
             glob.curvi_id = 1;
+            glob.curr_patlistpage = 1;
             glob.myBase = this;
             //Content="{Binding CurrentView}"
             //Binding myBinding = new Binding("CurrentView");
